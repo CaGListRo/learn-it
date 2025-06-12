@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Subnetting - LearnIT</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <style>
+      /* Stile für die Construction-Box */
+      .construction-container {
+        text-align: center;
+        padding: 60px 30px;
+        background: rgba(23, 23, 23, 0.7);
+        backdrop-filter: blur(8px);
+        border-radius: 12px;
+        max-width: 800px;
+        margin: 40px auto;
+      }
+
+      .construction-image {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      }
+
+      .construction-text {
+        color: #fff;
+        margin-top: 25px;
+        font-size: 1.3em;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+      }
+    </style>
+  </head>
+  <body class="subnetting-page">
+    <div class="container">
+      <div class="language-switcher">
+        <button onclick="switchLanguage('de')">Deutsch</button>
+        <button onclick="switchLanguage('en')">English</button>
+      </div>
+
+      <header>
+        <h1>Subnetting</h1>
+      </header>
+
+      <div class="construction-container">
+        <img
+          src="images/under-construction.jpg"
+          alt="In Arbeit"
+          class="construction-image"
+        />
+        <p class="construction-text">
+          Diese Seite befindet sich aktuell im Aufbau
+        </p>
+      </div>
+
+      <footer>
+        <p>
+          Erstellt mit ❤️ für die Fachinformatiker-Ausbildung |
+          <a href="https://github.com/caglistro/learn-it" id="github-link"
+            >GitHub-Repo</a
+          >
+        </p>
+        <p>
+          <a href="index.html" style="color: #aad3ff"
+            >← Zurück zur Startseite</a
+          >
+        </p>
+      </footer>
+    </div>
+
+    <script>
+      function switchLanguage(lang) {
+        if (lang === "en") {
+          window.location.href = "subnetting-en.html";
+        }
+      }
+    </script>
+  </body>
+</html>

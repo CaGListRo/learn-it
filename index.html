@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learn IT - Fachinformatiker-Wiki</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="language-switcher">
+        <button onclick="switchLanguage('de')">Deutsch</button>
+        <button onclick="switchLanguage('en')">English</button>
+      </div>
+
+      <header>
+        <h1 id="title">Learn IT</h1>
+        <p id="subtitle">Lernen durch Lehren – Fachinformatiker-Wiki</p>
+      </header>
+
+      <div class="topics">
+        <!-- Subnetting-Karte -->
+        <div class="topic-card">
+          <h2 id="subnetting-title">Subnetting</h2>
+          <p id="subnetting-desc">Grundlagen der Netzwerkunterteilung</p>
+          <a href="subnetting-de.html" id="subnetting-link">Zum Thema →</a>
+        </div>
+
+        <!-- Platzhalter-Karte -->
+        <div class="topic-card">
+          <h2 id="new-topic-title">Kommt in Kürze</h2>
+          <p id="new-topic-desc">Weitere Themen folgen</p>
+          <a href="#" id="new-topic-link">Bald verfügbar</a>
+        </div>
+      </div>
+
+      <footer>
+        <p id="footer-text">
+          Erstellt mit ❤️ für die Fachinformatiker-Ausbildung |
+          <a href="https://github.com/CaGListRo" id="github-link"
+            >GitHub-Repo</a
+          >
+        </p>
+      </footer>
+    </div>
+
+    <script>
+      function switchLanguage(lang) {
+        if (lang === "de") {
+          // Deutsch
+          document.getElementById("title").textContent = "Learn IT";
+          document.getElementById("subtitle").textContent =
+            "Lernen durch Lehren – Fachinformatiker-Wiki";
+          document.getElementById("subnetting-title").textContent =
+            "Subnetting";
+          document.getElementById("subnetting-desc").textContent =
+            "Grundlagen der Netzwerkunterteilung";
+          document.getElementById("subnetting-link").textContent =
+            "Zum Thema →";
+          document.getElementById("subnetting-link").href =
+            "subnetting-de.html";
+          document.getElementById("new-topic-title").textContent =
+            "Kommt in Kürze";
+          document.getElementById("new-topic-desc").textContent =
+            "Weitere Themen folgen";
+          document.getElementById("new-topic-link").textContent =
+            "Bald verfügbar";
+          document.getElementById("footer-text").innerHTML =
+            'Erstellt mit ❤️ für die Fachinformatiker-Ausbildung | <a href="https://github.com/CaGListRo">GitHub-Repo</a>';
+        } else if (lang === "en") {
+          // Englisch
+          document.getElementById("title").textContent = "Learn IT";
+          document.getElementById("subtitle").textContent =
+            "Learning through Teaching – IT Specialist Wiki";
+          document.getElementById("subnetting-title").textContent =
+            "Subnetting";
+          document.getElementById("subnetting-desc").textContent =
+            "Network subdivision basics";
+          document.getElementById("subnetting-link").textContent =
+            "To the topic →";
+          document.getElementById("subnetting-link").href =
+            "subnetting-en.html";
+          document.getElementById("new-topic-title").textContent =
+            "Coming soon";
+          document.getElementById("new-topic-desc").textContent =
+            "More topics coming";
+          document.getElementById("new-topic-link").textContent =
+            "Available soon";
+          document.getElementById("footer-text").innerHTML =
+            'Made with ❤️ for IT specialist training | <a href="https://github.com/CaGListRo">GitHub Repo</a>';
+        }
+      }
+    </script>
+  </body>
+</html>

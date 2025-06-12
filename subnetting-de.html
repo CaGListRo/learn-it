@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Subnetting - LearnIT</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <style>
+      /* Zusätzliche Styles nur für Subnetting-Seite */
+      .content-article {
+        background: rgba(23, 23, 23, 0.5);
+        padding: 30px;
+        border-radius: 12px;
+        margin-bottom: 30px;
+      }
+      .attention-box {
+        background: rgba(255, 165, 0, 0.2);
+        border-left: 4px solid #ffa500;
+        padding: 15px;
+        margin: 20px 0;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        background: rgba(255, 255, 255, 0.1);
+      }
+      th,
+      td {
+        padding: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        text-align: left;
+      }
+      th {
+        background: rgba(255, 255, 255, 0.15);
+      }
+      code {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: monospace;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="language-switcher">
+        <button onclick="switchLanguage('de')">Deutsch</button>
+        <button onclick="switchLanguage('en')">English</button>
+      </div>
+
+      <header>
+        <h1>Subnetting</h1>
+      </header>
+
+      <div class="content-article">
+        <h2>Was ist Subnetting?</h2>
+        <p>
+          Beim Subnetting unterteilt man ein Netzwerk in mehrere voneinander
+          getrennte Subnetze. Die Subnetze nennt man dann VLAN (Virtual Local
+          Area Network), also virtuelles lokales Netzwerk.
+        </p>
+        <br />
+        <h2>Subnetting, aber warum?</h2>
+        <p>
+          Es gibt nur drei Gründe, warum man ein Netzwerk in mehrere Subnetze
+          unterteilt:
+        </p>
+        <ul>
+          <li>
+            <strong>Sicherheit</strong>: Z.B. ist das Gastnetzwerk in der Regel
+            vom Hauptnetzwerk getrennt, damit man als Gast nicht den
+            Hauptnetzwerkdatenstrom anzapfen kann.
+          </li>
+          <li>
+            <strong>Skalierbarkeit</strong>: Z.B. wenn eine neue Abteilung in
+            einer Firma entsteht, kann man einfacher ein neues Subnetz
+            erstellen, als die neue Abteilung in das bestehende Netzwerk
+            einzupflegen.
+          </li>
+          <li>
+            <strong>Priorisierung</strong>: Z.B. bekommt das Netzwerk mit den
+            IP-Telefonen eine höhere Priorität als das Computernetzwerk, da es
+            egal ist, wenn die Internetseite etwas länger lädt, aber dafür
+            abgehackte Gespräche vermieden werden.
+          </li>
+        </ul>
+        <br />
+        <h2>Aufbau der Subnetzmasken</h2>
+        <p>
+          Die wahrscheinlich am häufigsten genutzte Subnetzmaske sieht so aus:
+          <code>255.255.255.0</code>. Das Wichtigste, was man daran verstehen
+          muss ist, dass es sich hierbei um die für uns Menschen besser lesbare
+          Form handelt. Dahinter steckt eigentlich
+          <code>11111111.11111111.11111111.00000000</code>.
+        </p>
+
+        <p>
+          Die einzelnen Blöcke in der Subnetzmaske nennt man Oktett. Daran
+          erkennt man auch schon eine Eigenheit von Subnetzmasken, denn diese
+          werden immer von links nach rechts mit Einsen gefüllt.
+          <code>11010010</code> kann niemals ein Oktett einer Subnetzmaske sein.
+        </p>
+
+        <table class="binary-decimal">
+          <tr>
+            <th>Binär</th>
+            <th>Dezimal</th>
+          </tr>
+          <tr>
+            <td>00000000</td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <td>10000000</td>
+            <td>128</td>
+          </tr>
+          <tr>
+            <td>11000000</td>
+            <td>192</td>
+          </tr>
+          <tr>
+            <td>11100000</td>
+            <td>224</td>
+          </tr>
+          <tr>
+            <td>11110000</td>
+            <td>240</td>
+          </tr>
+          <tr>
+            <td>11111000</td>
+            <td>248</td>
+          </tr>
+          <tr>
+            <td>11111100</td>
+            <td>252</td>
+          </tr>
+          <tr>
+            <td>11111110</td>
+            <td>254</td>
+          </tr>
+          <tr>
+            <td>11111111</td>
+            <td>255</td>
+          </tr>
+        </table>
+        <br />
+        <h2>Reguläre Schreibweise</h2>
+        <p>
+          Netzwerkadressen schreibt man auch so auf:
+          <code>192.168.0.0/24</code>. Wobei die 24 für die Anzahl der Einsen
+          steht. Hier also genau wie im oberen Beispiel drei mal acht Einsen
+          gefolgt von acht Nullen. Das heißt es gibt 256 Adressen (<code
+            >192.168.0.0 – 192.168.0.255</code
+          >), allerdings sind die erste und die letzte Adresse nicht nutzbar -
+          bleiben 254 nutzbare Adressen.
+        </p>
+        <br />
+        <h2>Subnetting, und wie?</h2>
+        <p>
+          Zuerst wird die benötigte Größe des Netzwerkes ermittelt. Sagen wir
+          z.B. dass 500 Endgeräte in unser Netzwerk sollen. Man braucht die
+          verdoppelte Binärfolge:
+        </p>
+
+        <table class="compact-table right-align-headers">
+          <tr>
+            <th>Binärfolge</th>
+            <td>1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, ...</td>
+          </tr>
+          <tr>
+            <th>Verdoppelte Binärfolge</th>
+            <td>2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, ...</td>
+          </tr>
+        </table>
+
+        <p>
+          Unsere 500 Endgeräte passen in die 512. Die 512 ist die neunte Zahl in
+          der verdoppelten Binärfolge und somit braucht die Subnetzmaske neun
+          Nullen, oder 23 Einsen. Sie sieht also so aus:
+          <code>11111111.11111111.11111110.00000000</code> bzw.
+          <code>255.255.254.0</code>. Für das Netzwerk
+          <code>10.0.0.0/23</code> ergibt sich daraus, dass die IP-Adressen von
+          <code>10.0.0.0</code> bis <code>10.0.1.255</code> zu dem Netzwerk
+          gehören - macht 512 Adressen, von denen 510 nutzbar sind.
+        </p>
+
+        <div class="attention-box" , style="color: #fff">
+          <strong>!!!ACHTUNG!!!</strong> Wenn es 512 Geräte gewesen wären,
+          welche in das Netzwerk gemusst hätten, hätte das nächst höhere
+          Netzwerk gewählt werden müssen, da es <u>immer</u> zwei nicht nutzbare
+          Adressen in einem Netzwerk gibt. Folglich hätte man im obigen Beispiel
+          das Netzwerk für 1024 Geräte wählen müssen, also die
+          <code>10.0.0.0/22</code> mit der Subnetzmaske
+          <code>255.255.252.0</code>.
+        </div>
+        <br />
+        <h2>Häufige Subnetze</h2>
+        <table>
+          <tr>
+            <th>Kennziffer</th>
+            <th>Subnetzmaske</th>
+            <th>IP's (brauchbare)</th>
+            <th>Anwendungsbeispiel</th>
+          </tr>
+          <tr>
+            <td>/22</td>
+            <td>255.255.252.0</td>
+            <td>1024 (1022)</td>
+            <td>Große Cloudnetzwerke</td>
+          </tr>
+          <tr>
+            <td>/23</td>
+            <td>255.255.254.0</td>
+            <td>512 (510)</td>
+            <td>Mittlere Clientnetzwerke</td>
+          </tr>
+          <tr>
+            <td>/24</td>
+            <td>255.255.255.0</td>
+            <td>256 (254)</td>
+            <td>Kleine Clientnetzwerke</td>
+          </tr>
+          <tr>
+            <td>/29</td>
+            <td>255.255.255.248</td>
+            <td>8 (6)</td>
+            <td>Redundante WAN Verbindung</td>
+          </tr>
+          <tr>
+            <td>/30</td>
+            <td>255.255.255.252</td>
+            <td>4 (2)</td>
+            <td>Punkt-zu-Punkt WAN Verbindung</td>
+          </tr>
+        </table>
+      </div>
+
+      <footer>
+        <p>
+          Erstellt mit ❤️ für die Fachinformatiker-Ausbildung |
+          <a href="https://github.com/dein-username/learn-it" id="github-link"
+            >GitHub-Repo</a
+          >
+        </p>
+        <p>
+          <a href="index.html" style="color: #aad3ff"
+            >← Zurück zur Startseite</a
+          >
+        </p>
+      </footer>
+    </div>
+
+    <script>
+      function switchLanguage(lang) {
+        // Hier später die Sprachumschaltung implementieren
+        console.log("Sprache wechseln zu:", lang);
+      }
+    </script>
+  </body>
+</html>
