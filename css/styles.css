@@ -1,0 +1,204 @@
+/* styles.css */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: url('../images/background-image-index.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+body.subnetting-page {
+    background: url('../images/background-image-subnetting.jpg') no-repeat center center fixed;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 30px;
+    background-color: rgba(23, 23, 23, 0.7);
+    backdrop-filter: blur(8px);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+header {
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    margin-bottom: 30px;
+}
+
+h1 {
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    margin-bottom: 10px;
+}
+
+.topics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+}
+
+.topic-card {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 8px;
+    padding: 25px;
+    transition: all 0.3s ease;
+}
+
+.topic-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.topic-card h2 {
+    color: #fff;
+    margin-top: 0;
+}
+
+.topic-card a {
+    color: #aad3ff; /* Hellere Linkfarbe */
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 15px;
+}
+
+.topic-card a:hover {
+    color: #7fbfff;
+    text-decoration: underline;
+}
+
+.language-switcher {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.language-switcher button {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: #fff;
+    padding: 5px 15px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-left: 5px;
+    transition: all 0.3s;
+}
+
+.language-switcher button:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+#github-link {
+    color: #aad3ff !important;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+#github-link:hover {
+    color: #7fbfff !important;
+    text-decoration: underline;
+}
+
+footer {
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Zusätzliche Styles für alle Seiten */
+.content-article {
+    background: rgba(23, 23, 23, 0.5);
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+}
+
+.attention-box {
+    background: rgba(255, 165, 0, 0.2);
+    border-left: 4px solid #ffa500;
+    padding: 15px;
+    margin: 20px 0;
+}
+
+/* Kompakte Tabellen */
+table.compact-table {
+    width: auto;
+    min-width: 300px;
+    margin: 20px 0;
+}
+
+table.compact-table th,
+table.compact-table td {
+    padding: 8px 12px;
+    white-space: nowrap;
+}
+
+/* Rechtsbündige Tabellenüberschriften */
+table.right-align-headers th {
+    text-align: right;
+    padding-right: 15px;
+}
+
+/* In deiner styles.css */
+table.binary-decimal {
+    width: auto;
+    min-width: 250px;
+    margin: 20px 0;
+    border-collapse: collapse;
+}
+
+table.binary-decimal th, 
+table.binary-decimal td {
+    padding: 8px 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+table.binary-decimal th:nth-child(1),
+table.binary-decimal td:nth-child(1) {
+    text-align: right;
+    padding-right: 20px;
+}
+table.binary-decimal th:nth-child(2),
+table.binary-decimal td:nth-child(2) {
+    text-align: left;
+    padding-left: 20px;
+}
+
+table.binary-decimal th {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: left;
+}
+
+th {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+code {
+    background: rgba(255, 255, 255, 0.2);
+    font-size: 1.2em;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: monospace;
+}
+
+.back-link {
+    color: #aad3ff;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px;
+}
