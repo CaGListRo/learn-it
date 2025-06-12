@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Subnetting - LearnIT</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <style>
+      .construction-container {
+        text-align: center;
+        padding: 40px 0;
+      }
+      .construction-image {
+        max-width: 80%;
+        height: auto;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+      .construction-text {
+        margin-top: 20px;
+        font-size: 1.2em;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body class="subnetting-page">
+    <div class="container">
+      <div class="language-switcher">
+        <button onclick="switchLanguage('de')">Deutsch</button>
+        <button onclick="switchLanguage('en')">English</button>
+      </div>
+
+      <header>
+        <h1>Subnetting</h1>
+        <p>Coming Soon - English Version</p>
+      </header>
+
+      <div class="construction-container">
+        <img
+          src="images/under-construction.jpg"
+          alt="Under Construction"
+          class="construction-image"
+        />
+        <p class="construction-text">
+          We're working hard to bring you the English version!
+        </p>
+      </div>
+
+      <footer>
+        <p>
+          Made with ❤️ for IT specialist training |
+          <a href="https://github.com/caglistro/learn-it" id="github-link"
+            >GitHub-Repo</a
+          >
+        </p>
+        <p>
+          <a href="index.html" style="color: #aad3ff">← Back to Homepage</a>
+        </p>
+      </footer>
+    </div>
+
+    <script>
+      function switchLanguage(lang) {
+        if (lang === "de") {
+          window.location.href = "subnetting-de.html";
+        }
+        // English bleibt auf dieser Seite
+      }
+    </script>
+  </body>
+</html>
