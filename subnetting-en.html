@@ -3,76 +3,298 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Subnetting - Learn IT</title>
+    <title>Subnetting - LearnIT</title>
     <link rel="stylesheet" href="css/styles.css" />
     <style>
-      /* Stile für die Construction-Box */
-      .construction-container {
-        text-align: center;
-        padding: 60px 30px;
-        background: rgba(23, 23, 23, 0.7);
-        backdrop-filter: blur(8px);
+      /* Zusätzliche Styles nur für Subnetting-Seite */
+      .content-article {
+        background: rgba(23, 23, 23, 0.5);
+        padding: 30px;
         border-radius: 12px;
-        max-width: 800px;
-        margin: 40px auto;
+        margin-bottom: 30px;
       }
-
-      .construction-image {
-        max-width: 100%;
-        height: auto;
-        border-radius: 8px;
-        border: 2px solid rgba(255, 255, 255, 0.1);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      .attention-box {
+        background: rgba(255, 165, 0, 0.2);
+        border-left: 4px solid #ffa500;
+        padding: 15px;
+        margin: 20px 0;
       }
-
-      .construction-text {
-        color: #fff;
-        margin-top: 25px;
-        font-size: 1.3em;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        background: rgba(255, 255, 255, 0.1);
+      }
+      th,
+      td {
+        padding: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        text-align: left;
+      }
+      th {
+        background: rgba(255, 255, 255, 0.15);
+      }
+      code {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: monospace;
       }
     </style>
   </head>
   <body class="subnetting-page">
     <div class="container">
-      <div class="language-switcher">
-        <button onclick="switchLanguage('de')">Deutsch</button>
-        <button onclick="switchLanguage('en')">English</button>
+      <div class="button-bar">
+        <div class="language-switcher">
+          <button onclick="switchLanguage('de')">Deutsch</button>
+          <button onclick="switchLanguage('en')">English</button>
+        </div>
+        <a href="downloads/subnetting-guide-en.pdf" download class="pdf-button">
+          Download content as PDF
+        </a>
       </div>
 
       <header>
         <h1>Subnetting</h1>
       </header>
 
-      <div class="construction-container">
-        <img
-          src="images/under-construction.jpg"
-          alt="In Arbeit"
-          class="construction-image"
-        />
-        <p class="construction-text">
-          Site currently under construction.
+      <div class="content-article">
+        <h2>What is Subnetting?</h2>
+        <p>
+          With subnetting you divide a network into several smaller separated
+          subnetworks. The subnets are then called VLAN (Virtual Local Area
+          Network).
         </p>
+        <br />
+        <h2>Subnetting, but why?</h2>
+        <p>There are only three good reasons for subnetting:</p>
+        <ul>
+          <table class="invisible-borders">
+            <tr>
+              <td>
+                <strong>Security:</strong>
+              </td>
+              <td>
+                For example is the guest network normally separated from the
+                main network, so no guest could track the data stream in the
+                main network.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Scalability:</strong>
+              </td>
+              <td>
+                When for example a new department is created in a company, it is
+                often easier to create a new subnet than to integrate the new
+                department in the existing network.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Treatment:</strong>
+              </td>
+              <td>
+                For example, the network with the IP-phones is given a higher
+                priority than the computer network, because it’s less critical
+                if a website loads slightly slower, whereas choppy calls must be
+                avoided.
+              </td>
+            </tr>
+          </table>
+        </ul>
+        <br />
+        <h2>Structure of the subnet mask</h2>
+        <p>
+          The most commonly used subnet mask is probaly this:
+          <code>255.255.255.0</code>. The most important thing to understand, is
+          that this is the more human-readable format. Behind it lies the actual
+          binary form: <code>11111111.11111111.11111111.00000000</code>. This
+          also reveals a key characteristic of subnet masks: They are always
+          filled with ones from left to right. The individual blocks of a subnet
+          mask are called octets. For example, <code>11010010</code> could never
+          be an octet in a subnet mask. The table below lists all possible
+          values an octet in a subnet mask can take.
+        </p>
+
+        <table class="binary-decimal">
+          <tr>
+            <th>Binary</th>
+            <th>Decimal</th>
+          </tr>
+          <tr>
+            <td>00000000</td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <td>10000000</td>
+            <td>128</td>
+          </tr>
+          <tr>
+            <td>11000000</td>
+            <td>192</td>
+          </tr>
+          <tr>
+            <td>11100000</td>
+            <td>224</td>
+          </tr>
+          <tr>
+            <td>11110000</td>
+            <td>240</td>
+          </tr>
+          <tr>
+            <td>11111000</td>
+            <td>248</td>
+          </tr>
+          <tr>
+            <td>11111100</td>
+            <td>252</td>
+          </tr>
+          <tr>
+            <td>11111110</td>
+            <td>254</td>
+          </tr>
+          <tr>
+            <td>11111111</td>
+            <td>255</td>
+          </tr>
+        </table>
+        <br />
+        <h2>Standard notation</h2>
+        <p>
+          Network addresses are also written like this:
+          <code>192.168.0.0/24</code>. Here, the 24 represents the number of
+          ones – in this case, exactly three sets of eight ones followed by
+          eight zeros (just like the previous example). This means there are 256
+          addresses total <code>(192.168.0.0 - 192.168.0.255)</code>, However,
+          the first and the last addresses are <u>never</u> usable, leaving 254
+          available addresses.
+        </p>
+        <br />
+        <h2>Subnetting, but how?</h2>
+        <p>
+          First determine the required network size. For example, let’s say we
+          need to accommodate 500 devices in our network. We use the doubled
+          binary sequence:
+        </p>
+
+        <table class="compact-table right-align-headers">
+          <tr>
+            <th>Binary sequence</th>
+            <td>1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, ...</td>
+          </tr>
+          <tr>
+            <th>Doubled binary sequence</th>
+            <td>2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, ...</td>
+          </tr>
+        </table>
+
+        <p>
+          Our 500 devices fit in the 512 range. Since 512 is the 9th number in
+          the doubled sequence, our subnet mask requires nine zeros (or 23
+          ones). It looks like this:
+          <code>11111111.11111111.11111110.00000000</code> (or
+          <code>255.255.254.0</code> in decimal). For the network
+          <code>10.0.0.0/23</code> this means IP addresses from
+          <code>10.0.0.0</code> to <code>10.0.1.255</code> belong to the
+          network, totaling 512 addresses (with 510 usable).
+        </p>
+
+        <div class="attention-box" , style="color: #fff">
+          <strong>!!!Caution!!!</strong> If we had needed exactly 512 devices,
+          we would have had to choose the next higher network (since two
+          addresses are <u>always</u> unusable). In this case, we had need the
+          <code>10.0.0.0/22</code> network with the subnet mask
+          <code>255.255.252.0</code>, supporting 1024(1022) addresses.
+        </div>
+        <br />
+        <h2>Common Subnets</h2>
+        <table>
+          <tr>
+            <th>CIDR</th>
+            <th>Subnet mask</th>
+            <th>IP's (usable)</th>
+            <th>Typical Use Case</th>
+          </tr>
+          <tr>
+            <td>/22</td>
+            <td>255.255.252.0</td>
+            <td>1024 (1022)</td>
+            <td>Large cloud networks</td>
+          </tr>
+          <tr>
+            <td>/23</td>
+            <td>255.255.254.0</td>
+            <td>512 (510)</td>
+            <td>Medium client networks</td>
+          </tr>
+          <tr>
+            <td>/24</td>
+            <td>255.255.255.0</td>
+            <td>256 (254)</td>
+            <td>Small client networks</td>
+          </tr>
+          <tr>
+            <td>/29</td>
+            <td>255.255.255.248</td>
+            <td>8 (6)</td>
+            <td>Redundant WAN connection</td>
+          </tr>
+          <tr>
+            <td>/30</td>
+            <td>255.255.255.252</td>
+            <td>4 (2)</td>
+            <td>Point-to-point WAN connection</td>
+          </tr>
+        </table>
+        <br />
+        <h2>Dividing into smaller subnets</h2>
+        <p>
+          Suppose a company uses the IP range
+          <code>172.16.0.0</code> and needs to partition it into smaller
+          subnets.<br />First, we carve out a block for a redundant WAN
+          connection: <code>172.16.0.0/29</code>
+          <code>(172.16.0.0 - 172.16.0.7)</code><br />
+          Next, we create a printer subnet. Since our example company has only
+          12 printers, we use a <code>/28</code> network (16 addresses 14
+          usable).<br />The next available subnet would then be
+          <code>172.16.0.16/28</code>. But what about the addresses
+          <code>172.16.0.8 - 172.16.0.15</code>?<br />Here we have two options:
+          either create another <code>/29</code> network (8 addresses 6 usable)
+          as <code>(172.16.0.8/29)</code>, or leave them unallocated as reserved
+          space. Importantly, we cannot start our <code>/28</code> network at
+          <code>172.16.0.8</code> because 8 is not divisible by 16.
+        </p>
+        <div class="attention-box" , style="color: #fff">
+          <strong>!!!IMPORTANT!!!</strong> When subnetting, address space must
+          be partitioned following technical constraints. A subnet must either
+          begin with 0 or start at an address that’s exactly divisible by the
+          subnet size. <code>/24</code> networks (256 addresses 254 usable) and
+          above must always start with 0. For example, a
+          <code>/26</code> network (64 addresses 62 usable) can only start at
+          <code>x.x.x.0</code>, <code>x.x.x.64</code>, <code>x.x.x128</code> or
+          <code>x.x.x.192</code>.
+        </div>
       </div>
 
       <footer>
         <p>
           Made with ❤️ for IT specialist training |
-          <a href="https://github.com/caglistro/learn-it" id="github-link"
+          <a href="https://github.com/caglistro" id="github-link"
             >GitHub-Repo</a
           >
         </p>
         <p>
-          <a href="index.html" style="color: #aad3ff"
-            >← Back to main page</a
-          >
+          <a href="index.html" style="color: #aad3ff">← Back to main page</a>
         </p>
       </footer>
     </div>
 
     <script>
       function switchLanguage(lang) {
-        if (lang === "en") {
+        if (lang === "de") {
+          window.location.href = "subnetting-de.html";
+        } else if (lang === "en") {
           window.location.href = "subnetting-en.html";
         }
       }
