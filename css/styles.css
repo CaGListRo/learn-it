@@ -80,24 +80,48 @@ h1 {
     text-decoration: underline;
 }
 
-.language-switcher {
-    text-align: right;
+/* Korrigierte Button-Bar und PDF-Button Styles */
+.button-bar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
     margin-bottom: 20px;
+    height: 32px; /* Feste Höhe für die gesamte Leiste */
 }
 
-.language-switcher button {
+.language-switcher {
+    display: flex;
+    gap: 10px;
+    margin: 0; /* Margin entfernen */
+}
+
+.language-switcher button,
+.pdf-button {
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.4);
     color: #fff;
-    padding: 5px 15px;
-    cursor: pointer;
+    padding: 2px 12px; /* Exakt gleiches Padding */
+    font-size: 0.875em; /* Exakt gleiche Schriftgröße (14px bei 16px Basis) */
     border-radius: 4px;
-    margin-left: 5px;
+    text-decoration: none;
+    display: inline-block;
+    line-height: 1.42857; /* Exakt gleiche Zeilenhöhe (20px bei 14px Schrift) */
+    align-items: center; /* Zentriert den Text vertikal */
+    justify-content: center;
+    vertical-align: top;
+    margin: 0;
     transition: all 0.3s;
+    font-family: inherit;
+    cursor: pointer;
+    height: 24px; /* Feste Höhe */
+    box-sizing: border-box; /* Padding in Höhe einberechnen */
 }
 
-.language-switcher button:hover {
+.language-switcher button:hover,
+.pdf-button:hover {
     background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-1px);
 }
 
 #github-link {
@@ -180,6 +204,19 @@ table.binary-decimal td:nth-child(2) {
 
 table.binary-decimal th {
     background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Unsichtbare Tabelle */
+table.invisible-borders {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+table.invisible-borders td {
+    padding: 12px 15px;
+    text-align: left;
+    border: none; /* Keine sichtbaren Rahmen */
 }
 
 th, td {
