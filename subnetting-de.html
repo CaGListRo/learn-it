@@ -42,11 +42,16 @@
       }
     </style>
   </head>
-  <body>
+  <body class="subnetting-page">
     <div class="container">
-      <div class="language-switcher">
-        <button onclick="switchLanguage('de')">Deutsch</button>
-        <button onclick="switchLanguage('en')">English</button>
+      <div class="button-bar">
+        <div class="language-switcher">
+          <button onclick="switchLanguage('de')">Deutsch</button>
+          <button onclick="switchLanguage('en')">English</button>
+        </div>
+        <a href="downloads/subnetting-guide-de.pdf" download class="pdf-button">
+          Inhalt als PDF herunterladen
+        </a>
       </div>
 
       <header>
@@ -63,30 +68,46 @@
         <br />
         <h2>Subnetting, aber warum?</h2>
         <p>
-          Es gibt nur drei Gründe, warum man ein Netzwerk in mehrere Subnetze
-          unterteilt:
+          Es gibt nur drei gute Gründe, warum man ein Netzwerk in mehrere
+          Subnetze unterteilt:
         </p>
         <ul>
-          <li>
-            <strong>Sicherheit</strong>: Z.B. ist das Gastnetzwerk in der Regel
-            vom Hauptnetzwerk getrennt, damit man als Gast nicht den
-            Hauptnetzwerkdatenstrom anzapfen kann.
-          </li>
-          <li>
-            <strong>Skalierbarkeit</strong>: Z.B. wenn eine neue Abteilung in
-            einer Firma entsteht, kann man einfacher ein neues Subnetz
-            erstellen, als die neue Abteilung in das bestehende Netzwerk
-            einzupflegen.
-          </li>
-          <li>
-            <strong>Priorisierung</strong>: Z.B. bekommt das Netzwerk mit den
-            IP-Telefonen eine höhere Priorität als das Computernetzwerk, da es
-            egal ist, wenn die Internetseite etwas länger lädt, aber dafür
-            abgehackte Gespräche vermieden werden.
-          </li>
+          <table class="invisible-borders">
+            <tr>
+              <td>
+                <strong>Sicherheit:</strong>
+              </td>
+              <td>
+                Z.B. ist das Gastnetzwerk in der Regel vom Hauptnetzwerk
+                getrennt, damit man als Gast nicht den Hauptnetzwerkdatenstrom
+                anzapfen kann.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Skalierbarkeit:</strong>
+              </td>
+              <td>
+                Z.B. wenn eine neue Abteilung in einer Firma entsteht, kann man
+                einfacher ein neues Subnetz erstellen, als die neue Abteilung in
+                das bestehende Netzwerk einzupflegen.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Behandlung:</strong>
+              </td>
+              <td>
+                Z.B. bekommt das Netzwerk mit den IP-Telefonen eine höhere
+                Priorität als das Computernetzwerk, da es egal ist, wenn die
+                Internetseite etwas länger lädt, aber dafür abgehackte Gespräche
+                vermieden werden.
+              </td>
+            </tr>
+          </table>
         </ul>
         <br />
-        <h2>Aufbau der Subnetzmasken</h2>
+        <h2>Aufbau der Subnetzmaske</h2>
         <p>
           Die wahrscheinlich am häufigsten genutzte Subnetzmaske sieht so aus:
           <code>255.255.255.0</code>. Das Wichtigste, was man daran verstehen
@@ -150,10 +171,10 @@
           Netzwerkadressen schreibt man auch so auf:
           <code>192.168.0.0/24</code>. Wobei die 24 für die Anzahl der Einsen
           steht. Hier also genau wie im oberen Beispiel drei mal acht Einsen
-          gefolgt von acht Nullen. Das heißt es gibt 256 Adressen (<code
-            >192.168.0.0 – 192.168.0.255</code
-          >), allerdings sind die erste und die letzte Adresse nicht nutzbar -
-          bleiben 254 nutzbare Adressen.
+          gefolgt von acht Nullen. Das heißt es gibt 256 Adressen
+          <code>(192.168.0.0 - 192.168.0.255)</code>, allerdings sind die erste
+          und die letzte Adresse <u>niemals</u> nutzbar - bleiben also 254
+          nutzbare Adressen.
         </p>
         <br />
         <h2>Subnetting, und wie?</h2>
@@ -185,7 +206,7 @@
           gehören - macht 512 Adressen, von denen 510 nutzbar sind.
         </p>
 
-        <div class="attention-box" , style="color: #fff">
+        <div class="attention-box" style="color: #fff">
           <strong>!!!ACHTUNG!!!</strong> Wenn es 512 Geräte gewesen wären,
           welche in das Netzwerk gemusst hätten, hätte das nächst höhere
           Netzwerk gewählt werden müssen, da es <u>immer</u> zwei nicht nutzbare
@@ -225,21 +246,51 @@
             <td>/29</td>
             <td>255.255.255.248</td>
             <td>8 (6)</td>
-            <td>Redundante WAN Verbindung</td>
+            <td>Redundante WAN-Verbindung</td>
           </tr>
           <tr>
             <td>/30</td>
             <td>255.255.255.252</td>
             <td>4 (2)</td>
-            <td>Punkt-zu-Punkt WAN Verbindung</td>
+            <td>Punkt-zu-Punkt WAN-Verbindung</td>
           </tr>
         </table>
+        <br />
+        <h2>Aufteilung in kleinere Subnetze</h2>
+        <p>
+          Angenommen in einem Unternehmen wird die IP
+          <code>172.16.0.0</code> benutzt und es wird in kleinere Netze
+          unterteilt.<br />Zuerst teilen wir uns ein Stück für eine redundante
+          WAN-Verbindung ab, also: <code>172.16.0.0/29</code>
+          <code>(172.16.0.0 - 172.16.0.7)</code><br />
+          Als nächstes teilen wir uns ein Druckernetzwerk ab. Da es in unserem
+          Musterunternehmen nur 12 Drucker gibt, nehmen wir ein
+          <code>/28</code> Netzwerk (16 Adressen 14 nutzbar).<br />Das nächste
+          freie Netzwerk ist dann die <code>172.16.0.16/28</code>. Doch was ist
+          mit den Adressen <code>172.16.0.8 - 172.16.0.15</code>?<br />Dort
+          können wir entweder ein weiteres <code>/29</code> Netzwerk (8 Adressen
+          6 nutzbar) anlegen <code>(172.16.0.8/29)</code>, oder einfach als
+          Reserve freilassen. Unser <code>/28</code> Netzwerk können wir auf
+          jeden Fall nicht bei der <code>172.16.0.8</code> starten, da die 8
+          nicht durch die 16 teilbar.
+        </p>
+        <div class="attention-box" , style="color: #fff">
+          <strong>!!!WICHTIG!!!</strong> Bei der Unterteilung in Subnetze muss
+          der Adressraum technisch sauber aufgeteilt werden. Heißt ein
+          Netzwerkbereich muss entweder mit 0 anfangen, oder mit einer Zahl die
+          sauber durch die Größe des Netzwerks geteilt werden kann.
+          <code>/24</code> Netzwerke (256 Adressen 254 nutzbar) und darüber
+          hinaus müssen immer mit der 0 anfangen. Ein <code>/26</code> Netzwerk
+          (64 Adressen 62 nutzbar) z.B. kann anfangen bei <code>x.x.x.0</code>,
+          <code>x.x.x.64</code>, <code>x.x.x128</code> oder
+          <code>x.x.x.192</code>.
+        </div>
       </div>
 
       <footer>
         <p>
           Erstellt mit ❤️ für die Fachinformatiker-Ausbildung |
-          <a href="https://github.com/dein-username/learn-it" id="github-link"
+          <a href="https://github.com/caglistro" id="github-link"
             >GitHub-Repo</a
           >
         </p>
@@ -253,8 +304,11 @@
 
     <script>
       function switchLanguage(lang) {
-        // Hier später die Sprachumschaltung implementieren
-        console.log("Sprache wechseln zu:", lang);
+        if (lang === "de") {
+          window.location.href = "subnetting-de.html";
+        } else if (lang === "en") {
+          window.location.href = "subnetting-en.html";
+        }
       }
     </script>
   </body>
