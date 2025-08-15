@@ -1,0 +1,1597 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Subnetzmaske - Learn IT</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <style>
+      .content-article {
+        background: rgba(23, 23, 23, 0.5);
+        padding: 30px;
+        border-radius: 12px;
+        margin-bottom: 30px;
+      }
+      .attention-box {
+        background: rgba(255, 165, 0, 0.2);
+        border-left: 4px solid #ffa500;
+        padding: 15px;
+        margin: 20px 0;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        background: rgba(255, 255, 255, 0.1);
+      }
+      th,
+      td {
+        padding: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        text-align: left;
+      }
+      th {
+        background: rgba(255, 255, 255, 0.15);
+      }
+      code {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: monospace;
+      }
+    </style>
+  </head>
+  <body class="subnet-mask-page">
+    <div class="container">
+      <div class="button-bar">
+        <div class="language-switcher">
+          <button onclick="switchLanguage('de')">Deutsch</button>
+          <button onclick="switchLanguage('en')">English</button>
+        </div>
+        <a href="downloads/die-subnetzmaske.pdf" download class="pdf-button">
+          Inhalt als PDF herunterladen
+        </a>
+      </div>
+
+      <header>
+        <h1>Die Subnetzmaske</h1>
+      </header>
+
+      <div class="content-article">
+        <h2>Funktion der Subnetzmaske</h2>
+        <p>
+          Die Subnetzmaske bestimmt, wie viele Bits für den Netzwerkanteil,
+          repräsentiert durch die Einsen, und den Hostanteil, repräsentiert
+          durch die Nullen, reserviert sind. Für die Auftrennung in Netzwerk-
+          und Hostanteil wird eine bitweise UND-Verknüpfung verwendet.
+        </p>
+        <br />
+        <h2>Umrechnung in Binär</h2>
+        <p>
+          Untersuchen wir das Netzwerk <code>192.168.1.0/24</code> mit der
+          Subnetzmaske <code>255.255.255.0</code> und Schlüsseln als Beispiel
+          die IP <code>192.168.1.5</code> auf. Da Subnetzmasken im Binärbereich
+          arbeiten, muss das alles erst mal in Binär umgerechnet werden.
+        </p>
+        <ul>
+          <table class="invisible-borders-collapse">
+            <tr>
+              <td>
+                <strong>192</strong>
+              </td>
+              <td>
+                <strong>.</strong>
+              </td>
+              <td>
+                <strong>168</strong>
+              </td>
+              <td>
+                <strong>.</strong>
+              </td>
+              <td>
+                <strong>1</strong>
+              </td>
+              <td>
+                <strong>.</strong>
+              </td>
+              <td>
+                <strong>5</strong>
+              </td>
+              <td>
+                <strong>→</strong>
+              </td>
+              <td>
+                <strong>11000000</strong>
+              </td>
+              <td>
+                <strong>.</strong>
+              </td>
+              <td>
+                <strong>10101000</strong>
+              </td>
+              <td>
+                <strong>.</strong>
+              </td>
+              <td>
+                <strong>00000001</strong>
+              </td>
+              <td>
+                <strong>.</strong>
+              </td>
+              <td>
+                <strong>00000101</strong>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>255</strong>
+              </td>
+              <td>
+                <strong>.</strong>
+              </td>
+              <td>
+                <strong>255</strong>
+              </td>
+              <td>
+                <strong>.</strong>
+              </td>
+              <td>
+                <strong>255</strong>
+              </td>
+              <td>
+                <strong>.</strong>
+              </td>
+              <td>
+                <strong>0</strong>
+              </td>
+              <td>
+                <strong>→</strong>
+              </td>
+              <td>
+                <strong>11111111</strong>
+              </td>
+              <td>
+                <strong>.</strong>
+              </td>
+              <td>
+                <strong>11111111</strong>
+              </td>
+              <td>
+                <strong>.</strong>
+              </td>
+              <td>
+                <strong>11111111</strong>
+              </td>
+              <td>
+                <strong>.</strong>
+              </td>
+              <td>
+                <strong>00000000</strong>
+              </td>
+            </tr>
+          </table>
+        </ul>
+        <p>
+          Diese beiden Binärzahlen werden dann über eine bitweise
+          UND-Verknüpfung miteinander "addiert".
+        </p>
+        <br />
+        <h2>Was ist die bitweise UND-Verknüpfung?</h2>
+        <p>
+          Die bitweise UND-Verknüpfung ist eine logische Überprüfung, ob beide
+          Eingangsparameter wahr (1) sind, um 1 zurückzugeben.
+        </p>
+        <ul>
+          <table class="invisible-borders-collapse">
+            <tr>
+              <td>
+                <strong>1</strong>
+              </td>
+              <td>
+                <strong>UND</strong>
+              </td>
+              <td>
+                <strong>1</strong>
+              </td>
+              <td>
+                <strong>=</strong>
+              </td>
+              <td>
+                <strong>1</strong>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>1</strong>
+              </td>
+              <td>
+                <strong>UND</strong>
+              </td>
+              <td>
+                <strong>0</strong>
+              </td>
+              <td>
+                <strong>=</strong>
+              </td>
+              <td>
+                <strong>0</strong>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>0</strong>
+              </td>
+              <td>
+                <strong>UND</strong>
+              </td>
+              <td>
+                <strong>1</strong>
+              </td>
+              <td>
+                <strong>=</strong>
+              </td>
+              <td>
+                <strong>0</strong>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>0</strong>
+              </td>
+              <td>
+                <strong>UND</strong>
+              </td>
+              <td>
+                <strong>0</strong>
+              </td>
+              <td>
+                <strong>=</strong>
+              </td>
+              <td>
+                <strong>0</strong>
+              </td>
+            </tr>
+          </table>
+        </ul>
+        <br />
+        <h2>Anwendung der bitweisen UND-Verknüpfung</h2>
+        <p>
+          Das Ergebnis der bitweisen UND-Verknüpfung nennt man auch Netzwerk-ID.
+          Die Netzwerk-ID ist auch immer die erste Adresse des Netzwerkes und
+          ist <u>nicht nutzbar</u>, da sie das Netzwerk definiert.
+        </p>
+        <ul>
+          <table class="invisible-borders-collapse">
+            <tr>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>.</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>.</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>.</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>1</strong></td>
+            </tr>
+            <tr>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>.</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>.</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>.</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+            </tr>
+            <tr>
+              <td colspan="38">
+                <strong
+                  >-----------------------------------------------------------------------------------------------------------------------(UND)-</strong
+                >
+              </td>
+            </tr>
+            <tr>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>.</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>.</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>.</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+            </tr>
+            <tr>
+              <td colspan="38">
+                |←------------------------------------ Netzwerkanteil
+                ---------------------------------------→|←------- Hostanteil
+                ------→|
+              </td>
+            </tr>
+          </table>
+          Die Trennung erfolgt an dieser Stelle, weil die Subnetzmaske hier
+          <code>255.255.255.0</code>
+          ist.
+        </ul>
+        <br />
+        <br />
+        <h2>Umrechnung in Dezimal</h2>
+        <p>
+          Die Netzwerk-ID <code>11000000.10101000.00000001.00000000</code> ist
+          umgerechnet <code>192.168.1.0</code>, was genau der Netzwerkdefinition
+          oben <code>(192.168.1.0/24)</code> entspricht.
+        </p>
+        <br />
+        <h2>Beispiele</h2>
+        <ul>
+          <table class="invisible-borders-collapse">
+            <tr>
+              <td>
+                <strong>172.16.1.42</strong>
+              </td>
+              <td>
+                <strong>UND</strong>
+              </td>
+              <td>
+                <strong>255.255.255.0</strong>
+              </td>
+              <td>
+                <strong>=</strong>
+              </td>
+              <td>
+                <strong>172.16.1.0</strong>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>172.16.1.35</strong>
+              </td>
+              <td>
+                <strong>UND</strong>
+              </td>
+              <td>
+                <strong>255.255.255.0</strong>
+              </td>
+              <td>
+                <strong>=</strong>
+              </td>
+              <td>
+                <strong>172.16.1.0</strong>
+              </td>
+            </tr>
+          </table>
+          Diese beiden Adressen befinden sich im selben Netzwerk und können
+          direkt miteinander kommunizieren.
+        </ul>
+        <br />
+        <ul>
+          <table class="invisible-borders-collapse">
+            <tr>
+              <td>
+                <strong>172.16.5.23</strong>
+              </td>
+              <td>
+                <strong>UND</strong>
+              </td>
+              <td>
+                <strong>255.255.255.0</strong>
+              </td>
+              <td>
+                <strong>=</strong>
+              </td>
+              <td>
+                <strong>172.16.5.0</strong>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>172.16.8.23</strong>
+              </td>
+              <td>
+                <strong>UND</strong>
+              </td>
+              <td>
+                <strong>255.255.255.0</strong>
+              </td>
+              <td>
+                <strong>=</strong>
+              </td>
+              <td>
+                <strong>172.16.8.0</strong>
+              </td>
+            </tr>
+          </table>
+          Diese beiden Adressen befinden sich in unterschiedlichen Netzwerken
+          und können nur über einen Router kommunizieren.
+        </ul>
+        <br />
+        <h2>Größere Netzwerke</h2>
+        <p>
+          Nehmen wir das Netzwerk <code>192.168.0.0/22</code>. Die Subnetzmaske
+          dieses Netzwerkes ist: <code>255.255.252.0</code>. Das gibt uns ein
+          Netzwerk mit 1024 IP Adressen von denen 1022 nutzbar sind. Der
+          Netzwerkbereich ist <code>192.168.0.0 - 192.168.3.255</code>. Nehmen
+          wir eine IP aus der Mitte:
+          <code>192.168.2.5</code>
+        </p>
+        <ul>
+          <table class="invisible-borders-collapse">
+            <tr>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>.</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>.</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>.</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>1</strong></td>
+            </tr>
+            <tr>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>.</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>.</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>.</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+            </tr>
+            <tr>
+              <td colspan="38">
+                <strong
+                  >-----------------------------------------------------------------------------------------------------------------------(UND)-</strong
+                >
+              </td>
+            </tr>
+            <tr>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>.</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>.</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>.</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+            </tr>
+          </table>
+          Die Netzwerk-ID ist also
+          <code>11000000.10101000.00000000.00000000</code>
+          oder in Dezimal
+          <code>192.168.0.0</code>
+        </ul>
+        <br />
+        <p>
+          Dieselbe Operation mit der IP <code>192.168.5.5</code>, welche
+          außerhalb des Netzwerkes sein sollte.
+        </p>
+        <ul>
+          <table class="invisible-borders-collapse">
+            <tr>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>.</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>.</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>.</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>1</strong></td>
+            </tr>
+            <tr>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>.</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>.</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>.</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+            </tr>
+            <tr>
+              <td colspan="38">
+                <strong
+                  >-----------------------------------------------------------------------------------------------------------------------(UND)-</strong
+                >
+              </td>
+            </tr>
+            <tr>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>.</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>.</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>.</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+            </tr>
+          </table>
+          Diese Netzwerk-ID ist
+          <code>11000000.10101000.00000100.00000000</code>
+          was
+          <code>192.168.4.0</code>
+          in Dezimal ergibt. Da
+          <code>192.168.3.255</code>
+          die letzte IP des Netzwerkes
+          <code>192.168.0.0/22</code
+          >, und damit die Broadcastadresse, ist, ist
+          <code>192.168.4.0</code>
+          die nächst höhere Adresse und definiert damit das nächste Netzwerk.
+          z.B.
+          <code>192.168.4.0/24</code>
+        </ul>
+        <br />
+        <div class="attention-box" , style="color: #fff">
+          <strong>!!!ACHTUNG!!!</strong> Die erste Adresse eines Netzwerkes ist
+          <u>immer</u> die Netzwerk-ID und die letzte Adresse ist
+          <u>immer</u> die Broadcastadresse. Diese beiden Adressen sind für uns
+          <u>nicht nutzbar</u>! Nutzbar sind nur die Adressen von der Zweiten
+          bis zur Vorletzten dem dem Netzwerk <code>192.168.0.0/22</code>, also
+          <code>192.168.0.1 - 192.168.3.254</code>.
+        </div>
+      </div>
+
+      <footer>
+        <p>
+          Erstellt mit ❤️ für die Fachinformatiker-Ausbildung |
+          <a href="https://github.com/caglistro/learn-it" id="github-link"
+            >GitHub-Repo</a
+          >
+        </p>
+        <p>
+          <a href="index.html" style="color: #aad3ff"
+            >← Zurück zur Startseite</a
+          >
+        </p>
+      </footer>
+    </div>
+
+    <script>
+      function switchLanguage(lang) {
+        if (lang === "de") {
+          window.location.href = "subnetmask-de.html";
+        } else if (lang === "en") {
+          window.location.href = "subnetmask-en.html";
+        }
+      }
+    </script>
+  </body>
+</html>
+=======
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Subnetzmaske - Learn IT</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <style>
+      /* Zusätzliche Styles nur für Subnetting-Seite */
+      .content-article {
+        background: rgba(23, 23, 23, 0.5);
+        padding: 30px;
+        border-radius: 12px;
+        margin-bottom: 30px;
+      }
+      .attention-box {
+        background: rgba(255, 165, 0, 0.2);
+        border-left: 4px solid #ffa500;
+        padding: 15px;
+        margin: 20px 0;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        background: rgba(255, 255, 255, 0.1);
+      }
+      th,
+      td {
+        padding: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        text-align: left;
+      }
+      th {
+        background: rgba(255, 255, 255, 0.15);
+      }
+      code {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: monospace;
+      }
+    </style>
+  </head>
+  <body class="subnet-mask-page">
+    <div class="container">
+      <div class="button-bar">
+        <div class="language-switcher">
+          <button onclick="switchLanguage('de')">Deutsch</button>
+          <button onclick="switchLanguage('en')">English</button>
+        </div>
+        <a href="downloads/die-subnetzmaske.pdf" download class="pdf-button">
+          Inhalt als PDF herunterladen
+        </a>
+      </div>
+
+      <header>
+        <h1>Die Subnetzmaske</h1>
+      </header>
+
+      <div class="content-article">
+        <h2>Funktion der Subnetzmaske</h2>
+        <p>
+          Die Subnetzmaske bestimmt, wie viele Bits für den Netzwerkanteil,
+          repräsentiert durch die Einsen, und den Hostanteil, repräsentiert
+          durch die Nullen, reserviert sind. Für die Auftrennung in Netzwerk-
+          und Hostanteil wird eine bitweise UND-Verknüpfung verwendet.
+        </p>
+        <br />
+        <h2>Umrechnung in Binär</h2>
+        <p>
+          Untersuchen wir das Netzwerk <code>192.168.1.0/24</code> mit der
+          Subnetzmaske <code>255.255.255.0</code> und Schlüsseln als Beispiel
+          die IP <code>192.168.1.5</code> auf. Da Subnetzmasken im Binärbereich
+          arbeiten, muss das alles erst mal in Binär umgerechnet werden.
+        </p>
+        <ul>
+          <table class="invisible-borders-collapse">
+            <tr>
+              <td>
+                <strong>192</strong>
+              </td>
+              <td>
+                <strong>.</strong>
+              </td>
+              <td>
+                <strong>168</strong>
+              </td>
+              <td>
+                <strong>.</strong>
+              </td>
+              <td>
+                <strong>1</strong>
+              </td>
+              <td>
+                <strong>.</strong>
+              </td>
+              <td>
+                <strong>5</strong>
+              </td>
+              <td>
+                <strong>→</strong>
+              </td>
+              <td>
+                <strong>11000000</strong>
+              </td>
+              <td>
+                <strong>.</strong>
+              </td>
+              <td>
+                <strong>10101000</strong>
+              </td>
+              <td>
+                <strong>.</strong>
+              </td>
+              <td>
+                <strong>00000001</strong>
+              </td>
+              <td>
+                <strong>.</strong>
+              </td>
+              <td>
+                <strong>00000101</strong>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>255</strong>
+              </td>
+              <td>
+                <strong>.</strong>
+              </td>
+              <td>
+                <strong>255</strong>
+              </td>
+              <td>
+                <strong>.</strong>
+              </td>
+              <td>
+                <strong>255</strong>
+              </td>
+              <td>
+                <strong>.</strong>
+              </td>
+              <td>
+                <strong>0</strong>
+              </td>
+              <td>
+                <strong>→</strong>
+              </td>
+              <td>
+                <strong>11111111</strong>
+              </td>
+              <td>
+                <strong>.</strong>
+              </td>
+              <td>
+                <strong>11111111</strong>
+              </td>
+              <td>
+                <strong>.</strong>
+              </td>
+              <td>
+                <strong>11111111</strong>
+              </td>
+              <td>
+                <strong>.</strong>
+              </td>
+              <td>
+                <strong>00000000</strong>
+              </td>
+            </tr>
+          </table>
+        </ul>
+        <br />
+        <h2>Was ist die bitweise UND-Verknüpfung?</h2>
+        <p>
+          Die bitweise UND-Verknüpfung ist eine logische Überprüfung, ob beide
+          Eingangsparameter wahr (1) sind, um 1 zurückzugeben.
+        </p>
+        <ul>
+          <table class="invisible-borders-collapse">
+            <tr>
+              <td>
+                <strong>1</strong>
+              </td>
+              <td>
+                <strong>UND</strong>
+              </td>
+              <td>
+                <strong>1</strong>
+              </td>
+              <td>
+                <strong>=</strong>
+              </td>
+              <td>
+                <strong>1</strong>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>1</strong>
+              </td>
+              <td>
+                <strong>UND</strong>
+              </td>
+              <td>
+                <strong>0</strong>
+              </td>
+              <td>
+                <strong>=</strong>
+              </td>
+              <td>
+                <strong>0</strong>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>0</strong>
+              </td>
+              <td>
+                <strong>UND</strong>
+              </td>
+              <td>
+                <strong>1</strong>
+              </td>
+              <td>
+                <strong>=</strong>
+              </td>
+              <td>
+                <strong>0</strong>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>0</strong>
+              </td>
+              <td>
+                <strong>UND</strong>
+              </td>
+              <td>
+                <strong>0</strong>
+              </td>
+              <td>
+                <strong>=</strong>
+              </td>
+              <td>
+                <strong>0</strong>
+              </td>
+            </tr>
+          </table>
+        </ul>
+
+        <br />
+        <h2>Anwendung der bitweisen UND-Verknüpfung</h2>
+        <p>
+          Das Ergebnis der bitweisen UND-Verknüpfung nennt man auch Netzwerk-ID.
+          Die Netzwerk-ID ist auch immer die erste Adresse des Netzwerkes und
+          ist <u>nicht nutzbar</u>, da sie das Netzwerk definiert.
+        </p>
+        <ul>
+          <table class="invisible-borders-collapse">
+            <tr>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>.</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>.</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>.</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>1</strong></td>
+            </tr>
+            <tr>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>.</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>.</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>.</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+            </tr>
+            <tr>
+              <td colspan="38">
+                <strong
+                  >-----------------------------------------------------------------------------------------------------------------------(UND)-</strong
+                >
+              </td>
+            </tr>
+            <tr>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>.</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>.</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>.</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+            </tr>
+            <tr>
+              <td colspan="38">
+                |←------------------------------------ Netzwerkanteil
+                ---------------------------------------→|←------- Hostanteil
+                ------→|
+              </td>
+            </tr>
+          </table>
+          Die Trennung erfolgt an dieser Stelle, weil die Subnetzmaske hier
+          <code>255.255.255.0</code>
+          ist.
+        </ul>
+        <br />
+        <br />
+        <h2>Umrechnung in Dezimal</h2>
+        <p>
+          Die Netzwerk-ID <code>11000000.10101000.00000001.00000000</code> ist
+          umgerechnet <code>192.168.1.0</code>, was genau der Netzwerkdefinition
+          oben <code>(192.168.1.0/24)</code> entspricht.
+        </p>
+        <br />
+        <h2>Beispiele</h2>
+        <ul>
+          <table class="invisible-borders-collapse">
+            <tr>
+              <td>
+                <strong>172.16.1.42</strong>
+              </td>
+              <td>
+                <strong>UND</strong>
+              </td>
+              <td>
+                <strong>255.255.255.0</strong>
+              </td>
+              <td>
+                <strong>=</strong>
+              </td>
+              <td>
+                <strong>172.16.1.0</strong>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>172.16.1.35</strong>
+              </td>
+              <td>
+                <strong>UND</strong>
+              </td>
+              <td>
+                <strong>255.255.255.0</strong>
+              </td>
+              <td>
+                <strong>=</strong>
+              </td>
+              <td>
+                <strong>172.16.1.0</strong>
+              </td>
+            </tr>
+          </table>
+          Diese beiden Adressen befinden sich im selben Netzwerk und können
+          direkt miteinander kommunizieren.
+        </ul>
+        <br />
+        <ul>
+          <table class="invisible-borders-collapse">
+            <tr>
+              <td>
+                <strong>172.16.5.23</strong>
+              </td>
+              <td>
+                <strong>UND</strong>
+              </td>
+              <td>
+                <strong>255.255.255.0</strong>
+              </td>
+              <td>
+                <strong>=</strong>
+              </td>
+              <td>
+                <strong>172.16.5.0</strong>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>172.16.8.23</strong>
+              </td>
+              <td>
+                <strong>UND</strong>
+              </td>
+              <td>
+                <strong>255.255.255.0</strong>
+              </td>
+              <td>
+                <strong>=</strong>
+              </td>
+              <td>
+                <strong>172.16.8.0</strong>
+              </td>
+            </tr>
+          </table>
+          Diese beiden Adressen befinden sich in unterschiedlichen Netzwerken
+          und können nur über einen Router kommunizieren.
+        </ul>
+        <br />
+        <h2>Größere Netzwerke</h2>
+        <p>
+          Nehmen wir das Netzwerk <code>192.168.0.0/22</code>. Die Subnetzmaske
+          dieses Netzwerkes ist: <code>255.255.252.0</code>. Das gibt uns ein
+          Netzwerk mit 1024 IP Adressen von denen 1022 nutzbar sind. Der
+          Netzwerkbereich ist <code>192.168.0.0 - 192.168.3.255</code>. Nehmen
+          wir eine IP aus der Mitte:
+          <code>192.168.2.5</code>
+        </p>
+        <ul>
+          <table class="invisible-borders-collapse">
+            <tr>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>.</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>.</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>.</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>1</strong></td>
+            </tr>
+            <tr>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>.</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>.</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>.</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+            </tr>
+            <tr>
+              <td colspan="38">
+                <strong
+                  >-----------------------------------------------------------------------------------------------------------------------(UND)-</strong
+                >
+              </td>
+            </tr>
+            <tr>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>.</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>.</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>.</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+            </tr>
+          </table>
+          Die Netzwerk-ID ist also
+          <code>11000000.10101000.00000000.00000000</code>
+          oder in Dezimal
+          <code>192.168.0.0</code>
+        </ul>
+        <br />
+        <p>
+          Dieselbe Operation mit der IP <code>192.168.5.5</code>, welche
+          außerhalb des Netzwerkes sein sollte.
+        </p>
+        <ul>
+          <table class="invisible-borders-collapse">
+            <tr>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>.</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>.</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>.</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>1</strong></td>
+            </tr>
+            <tr>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>.</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>.</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>.</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+            </tr>
+            <tr>
+              <td colspan="38">
+                <strong
+                  >-----------------------------------------------------------------------------------------------------------------------(UND)-</strong
+                >
+              </td>
+            </tr>
+            <tr>
+              <td><strong>1</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>.</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>.</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>1</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>.</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+            </tr>
+          </table>
+          Diese Netzwerk-ID ist
+          <code>11000000.10101000.00000100.00000000</code>
+          was
+          <code>192.168.4.0</code>
+          in Dezimal ergibt. Da
+          <code>192.168.3.255</code>
+          die letzte IP des Netzwerkes
+          <code>192.168.0.0/22</code
+          >, und damit die Broadcastadresse, ist, ist
+          <code>192.168.4.0</code>
+          die nächst höhere Adresse und definiert damit das nächste Netzwerk.
+          z.B.
+          <code>192.168.4.0/24</code>
+        </ul>
+        <br />
+        <div class="attention-box" , style="color: #fff">
+          <strong>!!!ACHTUNG!!!</strong> Die erste Adresse eines Netzwerkes ist
+          <u>immer</u> die Netzwerk-ID und die letzte Adresse ist
+          <u>immer</u> die Broadcastadresse. Diese beiden Adressen sind für uns
+          <u>nicht nutzbar</u>! Nutzbar sind nur die Adressen von der Zweiten
+          bis zur Vorletzten dem dem Netzwerk <code>192.168.0.0/22</code>, also
+          <code>192.168.0.1 - 192.168.3.254</code>.
+        </div>
+      </div>
+
+      <footer>
+        <p>
+          Erstellt mit ❤️ für die Fachinformatiker-Ausbildung |
+          <a href="https://github.com/caglistro" id="github-link"
+            >GitHub-Repo</a
+          >
+        </p>
+        <p>
+          <a href="index.html" style="color: #aad3ff"
+            >← Zurück zur Startseite</a
+          >
+        </p>
+      </footer>
+    </div>
+
+    <script>
+      function switchLanguage(lang) {
+        if (lang === "de") {
+          window.location.href = "subnetmask-de.html";
+        } else if (lang === "en") {
+          window.location.href = "subnetmask-en.html";
+        }
+      }
+    </script>
+  </body>
+</html>
+>>>>>>> 204e55a417c9f2c2dc6710004e76c2eb9908547e

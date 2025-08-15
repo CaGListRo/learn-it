@@ -1,0 +1,1235 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IP-Adressen - Learn IT</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <style>
+      .content-article {
+        background: rgba(23, 23, 23, 0.5);
+        padding: 30px;
+        border-radius: 12px;
+        margin-bottom: 30px;
+      }
+      .attention-box {
+        background: rgba(255, 165, 0, 0.2);
+        border-left: 4px solid #ffa500;
+        padding: 15px;
+        margin: 20px 0;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        background: rgba(255, 255, 255, 0.1);
+      }
+      th,
+      td {
+        padding: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        text-align: left;
+      }
+      th {
+        background: rgba(255, 255, 255, 0.15);
+      }
+      code {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: monospace;
+      }
+    </style>
+  </head>
+  <body class="subnetting-page">
+    <div class="container">
+      <div class="button-bar">
+        <div class="language-switcher">
+          <button onclick="switchLanguage('de')">Deutsch</button>
+          <button onclick="switchLanguage('en')">English</button>
+        </div>
+        <a href="downloads/ip-adresse.pdf" download class="pdf-button">
+          Inhalt als PDF herunterladen
+        </a>
+      </div>
+
+      <header>
+        <h1>IP-Adressen</h1>
+      </header>
+
+      <div class="content-article">
+        <h2>Was ist eine IP-Adresse?</h2>
+        <p>
+          Eine IP-Adresse (kurz: IP, das steht für Internet Protocol) ist die
+          eindeutige Adresse eines Geräts in einem Netzwerk. Ähnlich einer
+          postalischen Adresse ermöglicht sie den gerichteten Datenaustausch
+          zwischen Netzwerkkomponenten. So wird sichergestellt, dass Datenpakete
+          zuverlässig ihr Ziel erreichen, ohne Verwechslungen. Heutzutage gibt
+          es IPv4 und IPv6-Adressen. Das v4 bzw. v6 steht tatsächlich für die
+          Versionsnummer. Mit v5 wurde nur experimentiert, diese Version wurde
+          nie veröffentlicht.
+        </p>
+        <br />
+        <h2>Aufbau einer IPv4-Adresse</h2>
+        <p>
+          Eine IPv4-Adresse ist eine 32 Bit lange Zahl, aufgeteilt in vier Byte
+          (oder auch vier Oktette). Jedes Oktett kann die Zahlen 0 bis 255
+          <code>(Binär: 00000000 - 11111111)</code> annehmen. Wir haben also
+          2<sup>32</sup>
+          oder knapp 4,3 Milliarden IPv4-Adressen. IPv4-Adressen setzen sich
+          immer aus einem Netzwerkanteil und einem Hostanteil zusammen. Wo der
+          Netzwerkanteil aufhört und der Hostanteil anfängt, bestimmt die
+          <a href="subnetmask-de.html" id="github-link">Subnetzmaske</a>.
+        </p>
+        <br />
+        <h2>Klassen von IPv4-Adressen</h2>
+        <ul>
+          <table>
+            <tr>
+              <th>Klasse</th>
+              <th>Bereich</th>
+              <th>Netzwerkanteil</th>
+              <th>Anwendungsbeispiel</th>
+            </tr>
+            <tr>
+              <td>A</td>
+              <td><code>1.0.0.0 - 126.255.255.255</code></td>
+              <td>Erstes Oktett</td>
+              <td>Große Unternehmen / Provider</td>
+            </tr>
+            <tr>
+              <td>B</td>
+              <td><code>128.0.0.0 - 191.255.255.255</code></td>
+              <td>Ersten beiden Oktette</td>
+              <td>Mittlere Netzwerke wie z.B. Unis</td>
+            </tr>
+            <tr>
+              <td>C</td>
+              <td><code>192.0.0.0 - 223.255.255.255</code></td>
+              <td>Ersten drei Oktette</td>
+              <td>Kleine Netzwerke wie z.B. LAN</td>
+            </tr>
+            <tr>
+              <td>D</td>
+              <td><code>224.0.0.0 - 239.255.255.255</code></td>
+              <td></td>
+              <td>Multicast (Gruppenkommunikation)</td>
+            </tr>
+            <tr>
+              <td>E</td>
+              <td><code>240.0.0.0 - 255.255.255.255</code></td>
+              <td></td>
+              <td>Reserviert (Experimente)</td>
+            </tr>
+          </table>
+        </ul>
+        <br />
+        <h2>Besondere IPv4-Adressen</h2>
+        <ul>
+          <table class="compact-table">
+            <tr>
+              <td><code>0.0.0.0</code></td>
+              <td>Standardroute (Default route) / "Alle Adressen"</td>
+            </tr>
+            <tr>
+              <td><code>127.0.0.1</code></td>
+              <td>Loopbackadresse (Lokaler Rechner)</td>
+            </tr>
+            <tr>
+              <td><code>255.255.255.255</code></td>
+              <td>Broadcast alle Geräte im Internet</td>
+            </tr>
+          </table>
+        </ul>
+        <br />
+        <div class="attention-box" style="color: #fff">
+          <strong>Funfakt:</strong> <code>127.0.0.1</code> ist nicht die einzige
+          Loopbackadresse. Vielmehr ist es <code>127.0.0.0/8</code> oder der
+          IP-Bereich <code>127.0.0.1 - 127.255.255.254</code>, also gute 16
+          Millionen Möglichkeiten sich selbst zu "pingen".
+        </div>
+        <br />
+        <h2>Private IPv4-Adressbereiche</h2>
+        <p>
+          Es gibt drei private Adressbereiche bei IPv4-Adressen, die
+          <u>nur</u> für den privaten Bereich vorgesehen sind und
+          <u>nicht</u> im Internet geroutet werden können.
+        </p>
+        <ul>
+          <table class="invisible-borders-collapse">
+            <tr>
+              <td>
+                <code>10.0.0.0</code>
+              </td>
+              <td>
+                <strong>-</strong>
+              </td>
+              <td>
+                <code>10.255.255.255</code>
+              </td>
+              <td>
+                <strong>Klasse A</strong>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <code>172.16.0.0</code>
+              </td>
+              <td>
+                <strong>-</strong>
+              </td>
+              <td>
+                <code>172.31.255.255</code>
+              </td>
+              <td>
+                <strong>Klasse B</strong>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <code>192.168.0.0</code>
+              </td>
+              <td>
+                <strong>-</strong>
+              </td>
+              <td>
+                <code>192.168.255.255</code>
+              </td>
+              <td>
+                <strong>Klasse C</strong>
+              </td>
+            </tr>
+          </table>
+        </ul>
+        <br />
+        <h2>IPv4-Adressen sind knapp!</h2>
+        <p>
+          IPv4 wurde in den 1980er-Jahren eingeführt. Mit seinen 32-Bit und über
+          4 Milliarden Adressen hat man gedacht es wäre mehr als ausreichend.
+          Deshalb waren die Erfinder anfangs sehr großzügig und vergaben
+          Klasse-A-Netzwerke mit jeweils ca. 16,7 Millionen Adressen an große
+          Firmen und Institutionen, wie General Electric, IBM, HP, das MIT,
+          sowie an das Militär und Geheimdienste. <br />
+          Als dann in den 1990er-Jahren allmählich klar wurde, dass die Adressen
+          knapp werden, begann man gegenzusteuern. Eine der wichtigsten
+          Maßnahmen war die Einführung von Classless Inter-Domain Routing
+          (CIDR), wodurch die starre Einteilung in Klassen aufgehoben wurde und
+          Adressräume flexibler genutzt werden konnten. Einige Unternehmen gaben
+          ihre Klasse-A-Netze sogar freiwillig zurück, um die Lebensdauer von
+          IPv4 zu verlängern. <br />
+          Darüber hinaus wurde NAT (Network Address Translation, auf Deutsch:
+          Netzwerkadressübersetzung) eingeführt, ebenso wie die Definition der
+          heute gängigen privaten IPv4-Adressbereiche.
+        </p>
+        <br />
+        <h2>Was macht CIDR?</h2>
+        <p>
+          Das Classless Inter-Domain Routing (Deutsch: Klassenloses
+          Inter-Domain-Routing) verwendet eine flexible Präfixnotation (z.B.
+          /24), um Netzwerke beliebiger Größe zu definieren, statt fixer und
+          starrer Klassen. Dadurch können Adressen passgenauer vergeben und
+          große Blöcke zusammengefasst werden, was die Größe der globalen
+          Routing-Tabellen reduziert. Dieser Präfix gibt an, wie viele Bits der
+          Adresse, von links nach rechts gezählt, unveränderlich fest stehen.
+          Bei dem Netzwerk <code>192.168.0.0/24</code> zum Beispiel bleibt die
+          <code>192.168.0.</code> immer gleich und nur die hinterste Zahl ist
+          veränderlich. <code>192.168.1.x</code> ist dann ein anderes Netzwerk.
+          <a href="subnetting-de.html" id="github-link"
+            >Näheres beim Subnetting.</a
+          >
+        </p>
+        <br />
+        <h2>Was macht NAT?</h2>
+        <p>
+          In Heim- und Firmennetzwerken werden IP-Adressen aus den privaten
+          IPv4-Bereichen verwendet. Der Zugang zum Internet erfolgt dabei in der
+          Regel über einen Router. Dieser Router erhält vom Internetanbieter
+          (ISP - Internet Service Provider) eine öffentliche IP-Adresse. Der
+          Router verwendet NAT, um die privaten IPs des lokalen Netzwerks in die
+          öffentliche IP des Routers zu übersetzen, wenn Daten ins Internet
+          gesendet werden, und umgekehrt, wenn Daten aus dem Internet empfangen
+          werden. So können mehrere Geräte aus dem lokalen Netzwerk gleichzeitig
+          das Internet nutzen, ohne jeweils eine eigene öffentliche IP-Adresse
+          zu benötigen. Sie teilen sich alle die IP des Routers und dieser sorgt
+          dafür, dass alle Daten zu den richtigen Empfängern gelangen.
+        </p>
+        <br />
+        <h2>NAT nur eine Übergangslösung?</h2>
+        <p>
+          Die Einführung von NAT war ein wichtiger Schritt, um der
+          IPv4-Adressknappheit kurzfristig entgegenzuwirken. Da jedoch die Zahl
+          der internetfähigen Geräte förmlich explodierte und NAT auch gewisse
+          Nachteile mit sich bringt - wie erhöhte Komplexität bei Anwendungen
+          wie Peer-to-Peer-Kommunikation - wurde schließlich IPv6 eingeführt.
+        </p>
+        <br />
+        <h2>Aufbau einer IPv6-Adresse</h2>
+        <p>
+          Eine IPv6-Adresse ist eine 128-Bit lange Zahl, die in acht Blöcke von
+          jeweils 16-Bit, getrennt durch Doppelpunkte, aufgeteilt ist. Ein Block
+          wird oft Hextett genannt, aber auch Segment, Quartett, oder
+          16-Bit-Block, aber eigentlich haben die einzelnen Blöcke noch keinen
+          einheitlichen Namen. Jedes Hextett hat vier hexadezimale Ziffern und
+          kann die Werte <code>0000 - ffff (0 - 65535)</code> annehmen, wobei
+          letztendlich jede Ziffer wieder für eine 4-Bit Binärzahl steht
+          <code>0000 - 1111 (0 - 15)</code>. Eine typische IPv6-Adresse sieht
+          wie folgt aus: <code>2001:0db8:85a3:0000:0000:8a2e:0370:7334</code>.
+          Mit dieser Version vom Internet Protokoll haben wir jetzt 2<sup
+            >128</sup
+          >
+          IPv6-Adressen. Ausgeschrieben:
+          <strong>340.282.366.920.938.463.463.374.607.431.768.211.456</strong>.
+          Das sind mehr als 10<sup>28</sup> IPs pro Mensch auf der Erde (Bei
+          aktuell 8 Milliarden Menschen).
+        </p>
+        <br />
+        <h2>IPv6-Adressabkürzungen</h2>
+        <p>
+          Führende Nullen in einem Hextett dürfen weggelassen werden. Aus der
+          obigen IPv6 wird also:<br />
+          <code>2001:db8:85a3:0000:0000:8a2e:370:7334</code>.<br />
+          Des Weiteren dürfen Blöcke, welche ausschließlich aus Nullen bestehen,
+          ebenfalls weggelassen werden (jedoch nur <u>ein Mal</u> pro Adresse).
+          Übrig bleiben dann zwei aufeinanderfolgene Doppelpunkte ("::"), die
+          den weggefallenen Nullblock ersetzen:<br />
+          <code>2001:db8:85a3::8a2e:370:7334</code>.<br />
+          Steht der Nullblock am Anfang oder am Ende der Adresse, bleibt
+          entsprechend ein doppelter Doppelpunkt am Rand stehen:
+          <li><code>fe80::</code> (alle nachstehenden Nullen weggelassen)</li>
+          <li><code>::1</code> (alle vorstehenden Nullen weggelassen)</li>
+        </p>
+        <br />
+        <h2>IPv6-Adressaufteilung</h2>
+        <p>
+          Eine IPv6-Adresse besteht typischer Weise aus zwei Teilen, dem 64-Bit
+          langen Netzwerkpräfix, der vergleichbar ist mit dem
+          <a href="subnetmask-de.html" id="github-link">Netzanteil</a> bei
+          IPv4-Adressen, gefolgt von dem ebenfalls 64-Bit langen
+          Interface-Identifier (Schnittstellenidentifizierer), was die
+          eindeutige Kennung eines Host im Netzwerk ist (Ausnahme: Anycast). Der
+          Interface-Identifier wird oft aus der MAC-Adresse generiert, oder ist
+          zufällig.
+        </p>
+        <br />
+        <h2>IPv6-Adressaarten</h2>
+        <p>
+          Es gibt unterschiedliche Arten von IPv6-Adressen, die sich teilweise
+          an ihrem Präfix erkennen lassen. Zum Einen gibt es die
+          Unicast-Adressen, welche sich aufteilen in Global Unicast, Link-Local
+          und Unique Local. Es gibt aber auch noch Multicast- und
+          Anycast-Adressen.
+        </p>
+        <br />
+        <h2>Unicast-Adressen</h2>
+        <ul>
+          <table>
+            <tr>
+              <th><strong>Global Unicast</strong></th>
+              <td>
+                Öffentlich routbar im Internet.<br />Adressbereich:<code
+                  >2000:: - 3fff:ffff:ffff:ffff:...</code
+                >
+                Kurz: <code>2000::/3</code><br />Aktuell noch fast
+                ausschließlich <code>2000::/4</code>
+              </td>
+            </tr>
+            <tr>
+              <th><strong>Link-Local</strong></th>
+              <td>
+                <u>Nur</u> im lokalen Netzwerk gültig.<br />Adressbereich:<code
+                  >fe80:: - febf:ffff:ffff:ffff:...</code
+                >
+                Kurz: <code>fe80::/10</code><br />In der Praxis meist
+                <code>fe80::/64</code>
+              </td>
+            </tr>
+            <tr>
+              <th><strong>Unique Lokal</strong></th>
+              <td>
+                Ähnlich privaten IPv4-Adressen.<br />Adressbereich:<code
+                  >fc00:: - fdff:ffff:ffff:ffff:...</code
+                >
+                Kurz: <code>fc00::/7</code><br /><code>fd00::/8</code> ist als
+                Standard festgelegt.
+              </td>
+            </tr>
+          </table>
+        </ul>
+        <br />
+        <h2>Multicast</h2>
+        <p>
+          Multicast ist ein zentrales Konzept von IPv6 und ersetzt die
+          IPv4-Broadcast-Adressen durch eine effizientere und flexiblere
+          Gruppenkommunikation. Im Gegensatz zu Broadcasts, welche alle Hosts im
+          Netzwerk belasten, oder Unicast (eins-zu-eins Kommunikation)
+          ermöglicht Multicast die gezielte Ansprache von Empfängergruppen
+          (eins-zu-viele oder viele-zu-viele), die sich explizit für bestimmte
+          Dienste oder Nachrichten "interessieren".
+        </p>
+        <br />
+        <h2>Multicast-Adressformat</h2>
+        <p>
+          Der theoretische Adressbereich von Multicast ist:
+          <code>ff00::/8</code>, das dritte "Hex" (oder die dritte Stelle, also
+          die Bits 9-12) ist hier allerdings eine Flag (im Sinne von
+          "Signalflagge"), die zusätzliche Informationen über die
+          Multicast-Adresse gibt, und das vierte "Hex" (also die vierte Stelle,
+          oder die Bits 13-16) ein Scope (Bereich), welches den
+          Gültigkeitsbereich definiert.
+        </p>
+        <ul>
+          <table class="compact-table centered-text">
+            <tr>
+              <td>
+                <strong>8-Bit</strong>
+              </td>
+              <td>
+                <strong>4-Bit</strong>
+              </td>
+              <td>
+                <strong>4-Bit</strong>
+              </td>
+              <td>
+                <strong>112-Bit</strong>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>ff</strong>
+              </td>
+              <td>
+                <strong>Flag</strong>
+              </td>
+              <td>
+                <strong>Scope</strong>
+              </td>
+              <td>
+                <strong>Gruppen ID</strong>
+              </td>
+            </tr>
+          </table>
+        </ul>
+        <br />
+        <h2>Flags 4-Bit</h2>
+        <ul>
+          <table class="compact-table">
+            <tr>
+              <th class="centered"><strong>Wert</strong></th>
+              <th><strong>Bedeutung</strong></th>
+              <th><strong>Beschreibung</strong></th>
+            </tr>
+            <tr>
+              <td class="centered">0</td>
+              <td>Permanent (well known)</td>
+              <td>Von der IETF* definiert. (* siehe Anmerkung Unten)</td>
+            </tr>
+            <tr>
+              <td class="centered">1</td>
+              <td>Transient (temporär)</td>
+              <td>Dynamisch, wird z.B. durch Anwendungen erzeugt.</td>
+            </tr>
+            <tr>
+              <td class="centered">2</td>
+              <td>Nicht verwendet</td>
+              <td>Reserviert</td>
+            </tr>
+            <tr>
+              <td class="centered">4</td>
+              <td>Rendezvous Point (RPL)</td>
+              <td>Speziell für Routingprotokolle.</td>
+            </tr>
+          </table>
+        </ul>
+        <p>
+          Die Flags 3 und 5 - F sind nicht dokumentiert, also frei oder für
+          zukünftige Zwecke reserviert.
+        </p>
+        <br />
+        <div class="attention-box" style="color: #fff">
+          <strong>Anmerkung:</strong> Die Internet Engineering Task Force (IETF)
+          - auf Deutsch etwa Arbeitsgruppe für Internettechnik - ist eine
+          bedeutende Organisation, welche sich mit der technischen
+          Weiterentwicklung des Internets beschäftigt, mit dem Ziel
+          Internetstandards und sogenannte "Best Practices" zu entwickeln. Sie
+          setzt sich zusammen aus Netzwerktechnikern, Herstellern,
+          Netzbetreibern, Forschern und Anwendern - jeder kann mitwirken. Bei
+          Regelmäßigen Treffen werden Arbeitsgruppen zu spezifischen Themen, wie
+          Protokolle, Sicherheit oder Netzwerktechnologie, gebildet.<br />
+          Die Ergebnisse der IETF-Arbeit werden in sogenannten RFCs (Requests
+          for Comments) veröffentlicht. Dabei gibt es sowohl rein informelle
+          RFCs als auch solche mit verbindlichem Charakter, die als Standard
+          anerkannt sind (sogenannte Standards-Track RFCs). Diese sind zwar
+          nicht gesetzlich vorgeschrieben, doch wer sich nicht an sie hält,
+          läuft Gefahr, mit etablierten Systemen nicht kompatibel zu sein.<br />
+          Beispielsweise wurde IPv4 in der verbindlichen RFC 791 im Jahr 1981
+          definiert, während IPv6 mit RFC 2460 im Jahr 1998 eingeführt wurde.
+        </div>
+        <br />
+        <h2>Scopes 4-Bit</h2>
+        <ul>
+          <table class="compact-table">
+            <tr>
+              <th class="centered"><strong>Hex</strong></th>
+              <th><strong>Name</strong></th>
+              <th><strong>Beschreibung</strong></th>
+            </tr>
+            <tr>
+              <td class="centered">1</td>
+              <td>Interface-Local</td>
+              <td>Nur auf dem Gerät selbst.</td>
+            </tr>
+            <tr>
+              <td class="centered">2</td>
+              <td>Link-Local</td>
+              <td>Innerhalb des lokalen Netzwerksegments.</td>
+            </tr>
+            <tr>
+              <td class="centered">3</td>
+              <td>Subnet-Local</td>
+              <td>
+                Innerhalb des selben Subnetzes. (veraltet und kaum genutzt)
+              </td>
+            </tr>
+            <tr>
+              <td class="centered">4</td>
+              <td>Admin-Local</td>
+              <td>Innerhalb einer administrativen Domain.</td>
+            </tr>
+            <tr>
+              <td class="centered">5</td>
+              <td>Site-Local</td>
+              <td>Innerhalb einer gesamten Site. (z.B. Campus, Firma)</td>
+            </tr>
+            <tr>
+              <td class="centered">8</td>
+              <td>Organization-Local</td>
+              <td>Innerhalb einer Organisation.</td>
+            </tr>
+            <tr>
+              <td class="centered">E</td>
+              <td>Global</td>
+              <td>Weltweit gültig, also internetweit.</td>
+            </tr>
+          </table>
+        </ul>
+        <p>
+          Die Scopes 0, 6, 7, 9 - D und F werden nicht verwendet und/oder sind
+          für zukünftige Zwecke reserviert.
+        </p>
+        <div class="attention-box" style="color: #fff">
+          <strong>Anmerkung:</strong> <code>ff02::1</code> erreicht alle Knoten
+          (Nodes) im lokalen Netzwerk, wobei ein Knoten jedes Gerät ist, welches
+          eine oder mehrere IP-Adressen benutzen kann, wie Drucker, Server,
+          IP-Telefone, IoT-Geräte, während sich das Interface nur auf die
+          Schnittstelle des Knotens bezieht.
+        </div>
+        <br />
+        <h2>Anycast</h2>
+        <p>
+          Bei Anycast wird, wie bei Unicast, eine einzelne IPv6-Adresse
+          vergeben, allerdings an mehrere Geräte, meist Server oder Router,
+          gleichzeitig. Diese Geräte befinden sich an unterschiedlichen Orten im
+          Netzwerk oder weltweit verteilt.<br />
+          Wenn ein Gerät ein Paket an eine solche Anycast-Adresse sendet, wird
+          es immer den, aus Routing-Sicht, "nächstgelegenen" Knoten
+          weitergeleitet. Was als "nächstgelegen" gilt, entscheidet das
+          Routingprotokoll, basierend auf Kriterien wie Hop-Anzahl, Latenz
+          und/oder administrativen Kosten.
+        </p>
+        <div class="attention-box" style="color: #fff">
+          <strong>Wichtig:</strong> Die Adresse sieht aus wie eine normale
+          Unicast-Adresse. Anycast wird durch das Routingverhalten bestimmt,
+          nicht durch einen speziellen Adressbereich oder Präfix.
+        </div>
+        <br />
+        <h2>Vorteile von Anycast</h2>
+        <p>
+          <li>
+            <strong>Lastverteilung:</strong> Anfragen werden auf mehrere Server
+            verteilt, ohne dass der Client es merkt.
+          </li>
+          <li>
+            <strong>Niedrige Latenz:</strong> Clients erreichen automatisch den
+            "nächstgelegenen" Server.
+          </li>
+          <li>
+            <strong>Hohe Verfügbarkeit:</strong> Fällt ein Knoten aus, übernimmt
+            automatisch der Nächstbeste.
+          </li>
+          <li>
+            <strong>Einfache Adressierung:</strong> Ein Dienst, wie DNS, ist
+            immer unter der selben IP erreichbar, weltweit.
+          </li>
+        </p>
+        <br />
+        <h2>Einschränkungen von Anycast</h2>
+        <p>
+          Anycast eignet sich besonders gut für zustandslose Protokolle wie UDP,
+          z.B. bei DNS.<br />
+          Bei TCP-Verbindungen können Probleme auftreten, wenn im Verlauf der
+          TCP-Verbindung die Verbindung auf einen anderen Anycast-Knoten
+          weitergeleitet wird, was beispielsweise bei Verbindungsabbrüchen oder
+          Routingänderungen der Fall sein kann. Dies kann auch z.B. bei HTTPS,
+          SSH oder FTP zu Instabilitäten führen.
+        </p>
+        <br />
+        <h2>Beispiele für Anycast in der Praxis</h2>
+        <p>
+          <strong>Öffentliche DNS-Dienste</strong><br />
+          Die DNS-Server von Google haben die IP:
+          <code>2001:4860:4860::8888</code><br />
+          Die von Cloudflare haben folgende IP: <code>2606:4700:4700::1111</code
+          ><br />
+          Diese IPv6-Adressen sind weltweit erreichbar, aber es antwortet immer
+          der nächste Knoten.<br /><br />
+          <strong>Content Delivery Networks (CDNs)</strong><br />
+          Dienste wie Akamai, Cloudflare oder Fastly nutzen Anycast, um
+          Webinhalte schnell und redundant auszuliefern.
+        </p>
+      </div>
+
+      <footer>
+        <p>
+          Erstellt mit ❤️ für die Fachinformatiker-Ausbildung |
+          <a href="https://github.com/caglistro/learn-it" id="github-link"
+            >GitHub-Repo</a
+          >
+        </p>
+        <p>
+          <a href="index.html" style="color: #aad3ff"
+            >← Zurück zur Startseite</a
+          >
+        </p>
+      </footer>
+    </div>
+
+    <script>
+      function switchLanguage(lang) {
+        if (lang === "de") {
+          window.location.href = "ip-addresses-de.html";
+        } else if (lang === "en") {
+          window.location.href = "ip-addresses-en.html";
+        }
+      }
+    </script>
+  </body>
+</html>
+=======
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IP-Adressen - Learn IT</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <style>
+      .content-article {
+        background: rgba(23, 23, 23, 0.5);
+        padding: 30px;
+        border-radius: 12px;
+        margin-bottom: 30px;
+      }
+      .attention-box {
+        background: rgba(255, 165, 0, 0.2);
+        border-left: 4px solid #ffa500;
+        padding: 15px;
+        margin: 20px 0;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        background: rgba(255, 255, 255, 0.1);
+      }
+      th,
+      td {
+        padding: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        text-align: left;
+      }
+      th {
+        background: rgba(255, 255, 255, 0.15);
+      }
+      code {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: monospace;
+      }
+    </style>
+  </head>
+  <body class="subnetting-page">
+    <div class="container">
+      <div class="button-bar">
+        <div class="language-switcher">
+          <button onclick="switchLanguage('de')">Deutsch</button>
+          <button onclick="switchLanguage('en')">English</button>
+        </div>
+        <a href="downloads/ip-adresse.pdf" download class="pdf-button">
+          Inhalt als PDF herunterladen
+        </a>
+      </div>
+
+      <header>
+        <h1>IP-Adressen</h1>
+      </header>
+
+      <div class="content-article">
+        <h2>Was ist eine IP-Adresse?</h2>
+        <p>
+          Eine IP-Adresse (kurz: IP, das steht für Internet Protocol) ist die
+          eindeutige Adresse eines Geräts in einem Netzwerk. Ähnlich einer
+          postalischen Adresse ermöglicht sie den gerichteten Datenaustausch
+          zwischen Netzwerkkomponenten. So wird sichergestellt, dass Datenpakete
+          zuverlässig ihr Ziel erreichen, ohne Verwechslungen. Heutzutage gibt
+          es IPv4 und IPv6-Adressen. Das v4 bzw. v6 steht tatsächlich für die
+          Versionsnummer. Mit v5 wurde nur experimentiert, diese Version wurde
+          nie veröffentlicht.
+        </p>
+        <br />
+        <h2>Aufbau einer IPv4-Adresse</h2>
+        <p>
+          Eine IPv4-Adresse ist eine 32 Bit lange Zahl, aufgeteilt in vier Byte
+          (oder auch vier Oktette). Jedes Oktett kann die Zahlen 0 bis 255
+          <code>(Binär: 00000000 - 11111111)</code> annehmen. Wir haben also
+          2<sup>32</sup>
+          oder knapp 4,3 Milliarden IPv4-Adressen. IPv4-Adressen setzen sich
+          immer aus einem Netzwerkanteil und einem Hostanteil zusammen. Wo der
+          Netzwerkanteil aufhört und der Hostanteil anfängt, bestimmt die
+          <a href="subnetmask-de.html" id="github-link">Subnetzmaske</a>.
+        </p>
+        <br />
+        <h2>Klassen von IPv4-Adressen</h2>
+        <ul>
+          <table>
+            <tr>
+              <th>Klasse</th>
+              <th>Bereich</th>
+              <th>Netzwerkanteil</th>
+              <th>Anwendungsbeispiel</th>
+            </tr>
+            <tr>
+              <td>A</td>
+              <td><code>1.0.0.0 - 126.255.255.255</code></td>
+              <td>Erstes Oktett</td>
+              <td>Große Unternehmen / Provider</td>
+            </tr>
+            <tr>
+              <td>B</td>
+              <td><code>128.0.0.0 - 191.255.255.255</code></td>
+              <td>Ersten beiden Oktette</td>
+              <td>Mittlere Netzwerke wie z.B. Unis</td>
+            </tr>
+            <tr>
+              <td>C</td>
+              <td><code>192.0.0.0 - 223.255.255.255</code></td>
+              <td>Ersten drei Oktette</td>
+              <td>Kleine Netzwerke wie z.B. LAN</td>
+            </tr>
+            <tr>
+              <td>D</td>
+              <td><code>224.0.0.0 - 239.255.255.255</code></td>
+              <td></td>
+              <td>Multicast (Gruppenkommunikation)</td>
+            </tr>
+            <tr>
+              <td>E</td>
+              <td><code>240.0.0.0 - 255.255.255.255</code></td>
+              <td></td>
+              <td>Reserviert (Experimente)</td>
+            </tr>
+          </table>
+        </ul>
+        <br />
+        <h2>Besondere IPv4-Adressen</h2>
+        <ul>
+          <table class="compact-table">
+            <tr>
+              <td><code>0.0.0.0</code></td>
+              <td>Standardroute (Default route) / "Alle Adressen"</td>
+            </tr>
+            <tr>
+              <td><code>127.0.0.1</code></td>
+              <td>Loopbackadresse (Lokaler Rechner)</td>
+            </tr>
+            <tr>
+              <td><code>255.255.255.255</code></td>
+              <td>Broadcast alle Geräte im Internet</td>
+            </tr>
+          </table>
+        </ul>
+        <br />
+        <div class="attention-box" style="color: #fff">
+          <strong>Funfakt:</strong> <code>127.0.0.1</code> ist nicht die einzige
+          Loopbackadresse. Vielmehr ist es <code>127.0.0.0/8</code> oder der
+          IP-Bereich <code>127.0.0.1 - 127.255.255.254</code>, also gute 16
+          Millionen Möglichkeiten sich selbst zu "pingen".
+        </div>
+        <br />
+        <h2>Private IPv4-Adressbereiche</h2>
+        <p>
+          Es gibt drei private Adressbereiche bei IPv4-Adressen, die
+          <u>nur</u> für den privaten Bereich vorgesehen sind und
+          <u>nicht</u> im Internet geroutet werden können.
+        </p>
+        <ul>
+          <table class="invisible-borders-collapse">
+            <tr>
+              <td>
+                <code>10.0.0.0</code>
+              </td>
+              <td>
+                <strong>-</strong>
+              </td>
+              <td>
+                <code>10.255.255.255</code>
+              </td>
+              <td>
+                <strong>Klasse A</strong>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <code>172.16.0.0</code>
+              </td>
+              <td>
+                <strong>-</strong>
+              </td>
+              <td>
+                <code>172.31.255.255</code>
+              </td>
+              <td>
+                <strong>Klasse B</strong>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <code>192.168.0.0</code>
+              </td>
+              <td>
+                <strong>-</strong>
+              </td>
+              <td>
+                <code>192.168.255.255</code>
+              </td>
+              <td>
+                <strong>Klasse C</strong>
+              </td>
+            </tr>
+          </table>
+        </ul>
+        <br />
+        <h2>IPv4-Adressen sind knapp!</h2>
+        <p>
+          IPv4 wurde in den 1980er-Jahren eingeführt. Mit seinen 32-Bit und über
+          4 Milliarden Adressen hat man gedacht es wäre mehr als ausreichend.
+          Deshalb waren die Erfinder anfangs sehr großzügig und vergaben
+          Klasse-A-Netzwerke mit jeweils ca. 16,7 Millionen Adressen an große
+          Firmen und Institutionen, wie General Electric, IBM, HP, das MIT,
+          sowie an das Militär und Geheimdienste. <br />
+          Als dann in den 1990er-Jahren allmählich klar wurde, dass die Adressen
+          knapp werden, begann man gegenzusteuern. Eine der wichtigsten
+          Maßnahmen war die Einführung von Classless Inter-Domain Routing
+          (CIDR), wodurch die starre Einteilung in Klassen aufgehoben wurde und
+          Adressräume flexibler genutzt werden konnten. Einige Unternehmen gaben
+          ihre Klasse-A-Netze sogar freiwillig zurück, um die Lebensdauer von
+          IPv4 zu verlängern. <br />
+          Darüber hinaus wurde NAT (Network Address Translation, auf Deutsch:
+          Netzwerkadressübersetzung) eingeführt, ebenso wie die Definition der
+          heute gängigen privaten IPv4-Adressbereiche.
+        </p>
+        <br />
+        <h2>Was macht CIDR?</h2>
+        <p>
+          Das Classless Inter-Domain Routing (Deutsch: Klassenloses
+          Inter-Domain-Routing) verwendet eine flexible Präfixnotation (z.B.
+          /24), um Netzwerke beliebiger Größe zu definieren, statt fixer und
+          starrer Klassen. Dadurch können Adressen passgenauer vergeben und
+          große Blöcke zusammengefasst werden, was die Größe der globalen
+          Routing-Tabellen reduziert. Dieser Präfix gibt an, wie viele Bits der
+          Adresse, von links nach rechts gezählt, unveränderlich fest stehen.
+          Bei dem Netzwerk <code>192.168.0.0/24</code> zum Beispiel bleibt die
+          <code>192.168.0.</code> immer gleich und nur die hinterste Zahl ist
+          veränderlich. <code>192.168.1.x</code> ist dann ein anderes Netzwerk.
+          <a href="subnetting-de.html" id="github-link"
+            >Näheres beim Subnetting.</a
+          >
+        </p>
+        <br />
+        <h2>Was macht NAT?</h2>
+        <p>
+          In Heim- und Firmennetzwerken werden IP-Adressen aus den privaten
+          IPv4-Bereichen verwendet. Der Zugang zum Internet erfolgt dabei in der
+          Regel über einen Router. Dieser Router erhält vom Internetanbieter
+          (ISP - Internet Service Provider) eine öffentliche IP-Adresse. Der
+          Router verwendet NAT, um die privaten IPs des lokalen Netzwerks in die
+          öffentliche IP des Routers zu übersetzen, wenn Daten ins Internet
+          gesendet werden, und umgekehrt, wenn Daten aus dem Internet empfangen
+          werden. So können mehrere Geräte aus dem lokalen Netzwerk gleichzeitig
+          das Internet nutzen, ohne jeweils eine eigene öffentliche IP-Adresse
+          zu benötigen. Sie teilen sich alle die IP des Routers und dieser sorgt
+          dafür, dass alle Daten zu den richtigen Empfängern gelangen.
+        </p>
+        <br />
+        <h2>NAT nur eine Übergangslösung?</h2>
+        <p>
+          Die Einführung von NAT war ein wichtiger Schritt, um der
+          IPv4-Adressknappheit kurzfristig entgegenzuwirken. Da jedoch die Zahl
+          der internetfähigen Geräte förmlich explodierte und NAT auch gewisse
+          Nachteile mit sich bringt - wie erhöhte Komplexität bei Anwendungen
+          wie Peer-to-Peer-Kommunikation - wurde schließlich IPv6 eingeführt.
+        </p>
+        <br />
+        <h2>Aufbau einer IPv6-Adresse</h2>
+        <p>
+          Eine IPv6-Adresse ist eine 128-Bit lange Zahl, die in acht Blöcke von
+          jeweils 16-Bit, getrennt durch Doppelpunkte, aufgeteilt ist. Ein Block
+          wird oft Hextett genannt, aber auch Segment, Quartett, oder
+          16-Bit-Block, aber eigentlich haben die einzelnen Blöcke noch keinen
+          einheitlichen Namen. Jedes Hextett hat vier hexadezimale Ziffern und
+          kann die Werte <code>0000 - ffff (0 - 65535)</code> annehmen, wobei
+          letztendlich jede Ziffer wieder für eine 4-Bit Binärzahl steht
+          <code>0000 - 1111 (0 - 15)</code>. Eine typische IPv6-Adresse sieht
+          wie folgt aus: <code>2001:0db8:85a3:0000:0000:8a2e:0370:7334</code>.
+          Mit dieser Version vom Internet Protokoll haben wir jetzt 2<sup
+            >128</sup
+          >
+          IPv6-Adressen. Ausgeschrieben:
+          <strong>340.282.366.920.938.463.463.374.607.431.768.211.456</strong>.
+          Das sind mehr als 10<sup>28</sup> IPs pro Mensch auf der Erde (Bei
+          aktuell 8 Milliarden Menschen).
+        </p>
+        <br />
+        <h2>IPv6-Adressabkürzungen</h2>
+        <p>
+          Führende Nullen in einem Hextett dürfen weggelassen werden. Aus der
+          obigen IPv6 wird also:<br />
+          <code>2001:db8:85a3:0000:0000:8a2e:370:7334</code>.<br />
+          Des Weiteren dürfen Blöcke, welche ausschließlich aus Nullen bestehen,
+          ebenfalls weggelassen werden (jedoch nur <u>ein Mal</u> pro Adresse).
+          Übrig bleiben dann zwei aufeinanderfolgene Doppelpunkte ("::"), die
+          den weggefallenen Nullblock ersetzen:<br />
+          <code>2001:db8:85a3::8a2e:370:7334</code>.<br />
+          Steht der Nullblock am Anfang oder am Ende der Adresse, bleibt
+          entsprechend ein doppelter Doppelpunkt am Rand stehen:
+          <li><code>fe80::</code> (alle nachstehenden Nullen weggelassen)</li>
+          <li><code>::1</code> (alle vorstehenden Nullen weggelassen)</li>
+        </p>
+        <br />
+        <h2>IPv6-Adressaufteilung</h2>
+        <p>
+          Eine IPv6-Adresse besteht typischer Weise aus zwei Teilen, dem 64-Bit
+          langen Netzwerkpräfix, der vergleichbar ist mit dem
+          <a href="subnetmask-de.html" id="github-link">Netzanteil</a> bei
+          IPv4-Adressen, gefolgt von dem ebenfalls 64-Bit langen
+          Interface-Identifier (Schnittstellenidentifizierer), was die
+          eindeutige Kennung eines Host im Netzwerk ist (Ausnahme: Anycast). Der
+          Interface-Identifier wird oft aus der MAC-Adresse generiert, oder ist
+          zufällig.
+        </p>
+        <br />
+        <h2>IPv6-Adressaarten</h2>
+        <p>
+          Es gibt unterschiedliche Arten von IPv6-Adressen, die sich teilweise
+          an ihrem Präfix erkennen lassen. Zum Einen gibt es die
+          Unicast-Adressen, welche sich aufteilen in Global Unicast, Link-Local
+          und Unique Local. Es gibt aber auch noch Multicast- und
+          Anycast-Adressen.
+        </p>
+        <br />
+        <h2>Unicast-Adressen</h2>
+        <ul>
+          <table>
+            <tr>
+              <th><strong>Global Unicast</strong></th>
+              <td>
+                Öffentlich routbar im Internet.<br />Adressbereich:<code
+                  >2000:: - 3fff:ffff:ffff:ffff:...</code
+                >
+                Kurz: <code>2000::/3</code><br />Aktuell noch fast
+                ausschließlich <code>2000::/4</code>
+              </td>
+            </tr>
+            <tr>
+              <th><strong>Link-Local</strong></th>
+              <td>
+                <u>Nur</u> im lokalen Netzwerk gültig.<br />Adressbereich:<code
+                  >fe80:: - febf:ffff:ffff:ffff:...</code
+                >
+                Kurz: <code>fe80::/10</code><br />In der Praxis meist
+                <code>fe80::/64</code>
+              </td>
+            </tr>
+            <tr>
+              <th><strong>Unique Lokal</strong></th>
+              <td>
+                Ähnlich privaten IPv4-Adressen.<br />Adressbereich:<code
+                  >fc00:: - fdff:ffff:ffff:ffff:...</code
+                >
+                Kurz: <code>fc00::/7</code><br /><code>fd00::/8</code> ist als
+                Standard festgelegt.
+              </td>
+            </tr>
+          </table>
+        </ul>
+        <br />
+        <h2>Multicast</h2>
+        <p>
+          Multicast ist ein zentrales Konzept von IPv6 und ersetzt die
+          IPv4-Broadcast-Adressen durch eine effizientere und flexiblere
+          Gruppenkommunikation. Im Gegensatz zu Broadcasts, welche alle Hosts im
+          Netzwerk belasten, oder Unicast (eins-zu-eins Kommunikation)
+          ermöglicht Multicast die gezielte Ansprache von Empfängergruppen
+          (eins-zu-viele oder viele-zu-viele), die sich explizit für bestimmte
+          Dienste oder Nachrichten "interessieren".
+        </p>
+        <br />
+        <h2>Multicast-Adressformat</h2>
+        <p>
+          Der theoretische Adressbereich von Multicast ist:
+          <code>ff00::/8</code>, das dritte "Hex" (oder die dritte Stelle, also
+          die Bits 9-12) ist hier allerdings eine Flag (im Sinne von
+          "Signalflagge"), die zusätzliche Informationen über die
+          Multicast-Adresse gibt, und das vierte "Hex" (also die vierte Stelle,
+          oder die Bits 13-16) ein Scope (Bereich), welches den
+          Gültigkeitsbereich definiert.
+        </p>
+        <ul>
+          <table class="compact-table centered-text">
+            <tr>
+              <td>
+                <strong>8-Bit</strong>
+              </td>
+              <td>
+                <strong>4-Bit</strong>
+              </td>
+              <td>
+                <strong>4-Bit</strong>
+              </td>
+              <td>
+                <strong>112-Bit</strong>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>ff</strong>
+              </td>
+              <td>
+                <strong>Flag</strong>
+              </td>
+              <td>
+                <strong>Scope</strong>
+              </td>
+              <td>
+                <strong>Gruppen ID</strong>
+              </td>
+            </tr>
+          </table>
+        </ul>
+        <br />
+        <h2>Flags 4-Bit</h2>
+        <ul>
+          <table class="compact-table">
+            <tr>
+              <th class="centered"><strong>Wert</strong></th>
+              <th><strong>Bedeutung</strong></th>
+              <th><strong>Beschreibung</strong></th>
+            </tr>
+            <tr>
+              <td class="centered">0</td>
+              <td>Permanent (well known)</td>
+              <td>Von der IETF* definiert. (* siehe Anmerkung Unten)</td>
+            </tr>
+            <tr>
+              <td class="centered">1</td>
+              <td>Transient (temporär)</td>
+              <td>Dynamisch, wird z.B. durch Anwendungen erzeugt.</td>
+            </tr>
+            <tr>
+              <td class="centered">2</td>
+              <td>Nicht verwendet</td>
+              <td>Reserviert</td>
+            </tr>
+            <tr>
+              <td class="centered">4</td>
+              <td>Rendezvous Point (RPL)</td>
+              <td>Speziell für Routingprotokolle.</td>
+            </tr>
+          </table>
+        </ul>
+        <p>
+          Die Flags 3 und 5 - F sind nicht dokumentiert, also frei oder für
+          zukünftige Zwecke reserviert.
+        </p>
+        <br />
+        <div class="attention-box" style="color: #fff">
+          <strong>Anmerkung:</strong> Die Internet Engineering Task Force (IETF)
+          - auf Deutsch etwa Arbeitsgruppe für Internettechnik - ist eine
+          bedeutende Organisation, welche sich mit der technischen
+          Weiterentwicklung des Internets beschäftigt, mit dem Ziel
+          Internetstandards und sogenannte "Best Practices" zu entwickeln. Sie
+          setzt sich zusammen aus Netzwerktechnikern, Herstellern,
+          Netzbetreibern, Forschern und Anwendern - jeder kann mitwirken. Bei
+          Regelmäßigen Treffen werden Arbeitsgruppen zu spezifischen Themen, wie
+          Protokolle, Sicherheit oder Netzwerktechnologie, gebildet.<br />
+          Die Ergebnisse der IETF-Arbeit werden in sogenannten RFCs (Requests
+          for Comments) veröffentlicht. Dabei gibt es sowohl rein informelle
+          RFCs als auch solche mit verbindlichem Charakter, die als Standard
+          anerkannt sind (sogenannte Standards-Track RFCs). Diese sind zwar
+          nicht gesetzlich vorgeschrieben, doch wer sich nicht an sie hält,
+          läuft Gefahr, mit etablierten Systemen nicht kompatibel zu sein.<br />
+          Beispielsweise wurde IPv4 in der verbindlichen RFC 791 im Jahr 1981
+          definiert, während IPv6 mit RFC 2460 im Jahr 1998 eingeführt wurde.
+        </div>
+        <br />
+        <h2>Scopes 4-Bit</h2>
+        <ul>
+          <table class="compact-table">
+            <tr>
+              <th class="centered"><strong>Hex</strong></th>
+              <th><strong>Name</strong></th>
+              <th><strong>Beschreibung</strong></th>
+            </tr>
+            <tr>
+              <td class="centered">1</td>
+              <td>Interface-Local</td>
+              <td>Nur auf dem Gerät selbst.</td>
+            </tr>
+            <tr>
+              <td class="centered">2</td>
+              <td>Link-Local</td>
+              <td>Innerhalb des lokalen Netzwerksegments.</td>
+            </tr>
+            <tr>
+              <td class="centered">3</td>
+              <td>Subnet-Local</td>
+              <td>
+                Innerhalb des selben Subnetzes. (veraltet und kaum genutzt)
+              </td>
+            </tr>
+            <tr>
+              <td class="centered">4</td>
+              <td>Admin-Local</td>
+              <td>Innerhalb einer administrativen Domain.</td>
+            </tr>
+            <tr>
+              <td class="centered">5</td>
+              <td>Site-Local</td>
+              <td>Innerhalb einer gesamten Site. (z.B. Campus, Firma)</td>
+            </tr>
+            <tr>
+              <td class="centered">8</td>
+              <td>Organization-Local</td>
+              <td>Innerhalb einer Organisation.</td>
+            </tr>
+            <tr>
+              <td class="centered">E</td>
+              <td>Global</td>
+              <td>Weltweit gültig, also internetweit.</td>
+            </tr>
+          </table>
+        </ul>
+        <p>
+          Die Scopes 0, 6, 7, 9 - D und F werden nicht verwendet und/oder sind
+          für zukünftige Zwecke reserviert.
+        </p>
+        <div class="attention-box" style="color: #fff">
+          <strong>Anmerkung:</strong> <code>ff02::1</code> erreicht alle Knoten
+          (Nodes) im lokalen Netzwerk, wobei ein Knoten jedes Gerät ist, welches
+          eine oder mehrere IP-Adressen benutzen kann, wie Drucker, Server,
+          IP-Telefone, IoT-Geräte, während sich das Interface nur auf die
+          Schnittstelle des Knotens bezieht.
+        </div>
+        <br />
+        <h2>Anycast</h2>
+        <p>
+          Bei Anycast wird, wie bei Unicast, eine einzelne IPv6-Adresse
+          vergeben, allerdings an mehrere Geräte, meist Server oder Router,
+          gleichzeitig. Diese Geräte befinden sich an unterschiedlichen Orten im
+          Netzwerk oder weltweit verteilt.<br />
+          Wenn ein Gerät ein Paket an eine solche Anycast-Adresse sendet, wird
+          es immer den, aus Routing-Sicht, "nächstgelegenen" Knoten
+          weitergeleitet. Was als "nächstgelegen" gilt, entscheidet das
+          Routingprotokoll, basierend auf Kriterien wie Hop-Anzahl, Latenz
+          und/oder administrativen Kosten.
+        </p>
+        <div class="attention-box" style="color: #fff">
+          <strong>Wichtig:</strong> Die Adresse sieht aus wie eine normale
+          Unicast-Adresse. Anycast wird durch das Routingverhalten bestimmt,
+          nicht durch einen speziellen Adressbereich oder Präfix.
+        </div>
+        <br />
+        <h2>Vorteile von Anycast</h2>
+        <p>
+          <li>
+            <strong>Lastverteilung:</strong> Anfragen werden auf mehrere Server
+            verteilt, ohne dass der Client es merkt.
+          </li>
+          <li>
+            <strong>Niedrige Latenz:</strong> Clients erreichen automatisch den
+            "nächstgelegenen" Server.
+          </li>
+          <li>
+            <strong>Hohe Verfügbarkeit:</strong> Fällt ein Knoten aus, übernimmt
+            automatisch der Nächstbeste.
+          </li>
+          <li>
+            <strong>Einfache Adressierung:</strong> Ein Dienst, wie DNS, ist
+            immer unter der selben IP erreichbar, weltweit.
+          </li>
+        </p>
+        <br />
+        <h2>Einschränkungen von Anycast</h2>
+        <p>
+          Anycast eignet sich besonders gut für zustandslose Protokolle wie UDP,
+          z.B. bei DNS.<br />
+          Bei TCP-Verbindungen können Probleme auftreten, wenn im Verlauf der
+          TCP-Verbindung die Verbindung auf einen anderen Anycast-Knoten
+          weitergeleitet wird, was beispielsweise bei Verbindungsabbrüchen oder
+          Routingänderungen der Fall sein kann. Dies kann auch z.B. bei HTTPS,
+          SSH oder FTP zu Instabilitäten führen.
+        </p>
+        <br />
+        <h2>Beispiele für Anycast in der Praxis</h2>
+        <p>
+          <strong>Öffentliche DNS-Dienste</strong><br />
+          Die DNS-Server von Google haben die IP:
+          <code>2001:4860:4860::8888</code><br />
+          Die von Cloudflare haben folgende IP: <code>2606:4700:4700::1111</code
+          ><br />
+          Diese IPv6-Adressen sind weltweit erreichbar, aber es antwortet immer
+          der nächste Knoten.<br /><br />
+          <strong>Content Delivery Networks (CDNs)</strong><br />
+          Dienste wie Akamai, Cloudflare oder Fastly nutzen Anycast, um
+          Webinhalte schnell und redundant auszuliefern.
+        </p>
+      </div>
+
+      <footer>
+        <p>
+          Erstellt mit ❤️ für die Fachinformatiker-Ausbildung |
+          <a href="https://github.com/caglistro/learn-it" id="github-link"
+            >GitHub-Repo</a
+          >
+        </p>
+        <p>
+          <a href="index.html" style="color: #aad3ff"
+            >← Zurück zur Startseite</a
+          >
+        </p>
+      </footer>
+    </div>
+
+    <script>
+      function switchLanguage(lang) {
+        if (lang === "de") {
+          window.location.href = "ip-addresses-de.html";
+        } else if (lang === "en") {
+          window.location.href = "ip-addresses-en.html";
+        }
+      }
+    </script>
+  </body>
+</html>
+>>>>>>> 204e55a417c9f2c2dc6710004e76c2eb9908547e

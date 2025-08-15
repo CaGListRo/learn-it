@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Referenzschichtmodelle - Learn IT</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <style>
+      .content-article {
+        background: rgba(23, 23, 23, 0.5);
+        padding: 30px;
+        border-radius: 12px;
+        margin-bottom: 30px;
+      }
+      .attention-box {
+        background: rgba(255, 165, 0, 0.2);
+        border-left: 4px solid #ffa500;
+        padding: 15px;
+        margin: 20px 0;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        background: rgba(255, 255, 255, 0.1);
+      }
+      th,
+      td {
+        padding: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        text-align: left;
+      }
+      th {
+        background: rgba(255, 255, 255, 0.15);
+      }
+      code {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: monospace;
+      }
+    </style>
+  </head>
+  <body class="reference-layer-models-page">
+    <div class="container">
+      <div class="button-bar">
+        <div class="language-switcher">
+          <button onclick="switchLanguage('de')">Deutsch</button>
+          <button onclick="switchLanguage('en')">English</button>
+        </div>
+        <a
+          href="downloads/Referenzschichtmodelle.pdf"
+          download
+          class="pdf-button"
+        >
+          Inhalt als PDF herunterladen
+        </a>
+      </div>
+
+      <header>
+        <h1>Referenzschichtmodelle</h1>
+      </header>
+
+      <div class="content-article">
+        <h2>Was sind Referenzschichtmodelle?</h2>
+        <p>
+          Ein Referenzschichtmodell stellt die komplexe Kommunikation innerhalb
+          von Netzwerken strukturiert aufgeteilt in Schichten (Englisch: Layers)
+          dar. Jede Schicht übernimmt klar definierte Aufgaben und bietet eine
+          standardisierte Schnittstelle. Darüber hinaus können durch die Nutzung
+          desselben Referenzmodells unterschiedliche Unternehmen Produkte
+          entwickeln, welche untereinander kompatibel sind.<br />
+          Heutzutage werden, mit sehr seltenen Ausnahmen, drei verschiedene
+          Schichtmodelle genutzt. OSI, TCP/IP und IEEE 802.
+        </p>
+        <br />
+        <h2>Die Zwecke von Referenzschichtmodellen</h2>
+        <p>
+          <li>Komplexitätsreduktion</li>
+          <li>Modularisierung</li>
+          <li>Herstellerübergreifende Interoperabilität</li>
+          <li>Erleichterte Fehlerlokalisation</li>
+          <li>
+            Unabhängig von spezifischer Hardware und spezifischen Technologien
+          </li>
+        </p>
+        <br />
+        <h2>Das OSI-Modell</h2>
+        <p>
+          OSI steht für Open Systems Interconnection (Deutsch etwa: Offene
+          Systemverbindung) wurde 1977 von der ISO (International Organization
+          for Standardization, Deutsch: Internationale
+          Standardisierungsorganisation) initiiert und wurde 1984 als ISO 7498
+          veröffentlicht. Das OSI-Modell wurde als universelles Standardmodell
+          für alle Netzwerke entwickelt.
+        </p>
+        <br />
+        <h2>Schichten und Aufgaben des OSI-Modells</h2>
+        <ul>
+          <table class="compact-table">
+            <tr>
+              <td>7</td>
+              <td><strong>Anwendungsschicht</strong></td>
+              <td>Schnittstelle zu Anwendungen (z.B. HTTP, SMTP)</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td><strong>Darstellungsschicht</strong></td>
+              <td>
+                Datenformatierung (z.B. ASCII, JPEG, Verschlüsselung,
+                Kompression)
+              </td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td><strong>Sitzungsschicht</strong></td>
+              <td>
+                Sitzungsverwaltung, Dialogsteuerung (z.B.
+                Sitzungswiederaufnahme)
+              </td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td><strong>Transportschicht</strong></td>
+              <td>
+                Ende-zu-Ende-Kommunikation, Fehlerkorrektur, Flusskontrolle
+                (TCP, UDP)
+              </td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td><strong>Vermittlungsschicht</strong></td>
+              <td>Routing, logische Adressierung (z.B. IP, ICMP, ARP)</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td><strong>Sicherungsschicht</strong></td>
+              <td>
+                Fehlerkontrolle, Rahmung, Zugriffskontrolle (z.B. MAC-Adressen)
+              </td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td><strong>Bitübertragungsschicht</strong></td>
+              <td>
+                Übertragung von Bits via Stecker, Kabel und/oder Signalpegel
+              </td>
+            </tr>
+          </table>
+        </ul>
+        <br />
+        <h2>Das OSI-Modell in der Praxis</h2>
+        <p>
+          Das OSI-Modell wird zur Strukturierung von Protokollen,
+          Netzwerktheorie und Lehre genutzt. Praxisnahe Implementierungen
+          orientieren sich nur grob daran.
+        </p>
+        <br />
+        <h2>Das TCP/IP-Modell</h2>
+        <p>
+          Die ARPA, später DARPA ((Defense) Advanced Research Projects Agency,
+          Deutsch etwa: Behörde für fortschrittliche (Verteidigungs-)
+          Forschungsprojekte) entwickelte das TCP/IP-Modell in den 1970er Jahren
+          für ihr ARPANET (Advanced Research Projects Agency NETwork). 1983
+          wurde das TCP/IP das Standardmodell im ARPANET.
+        </p>
+        <br />
+        <div class="attention-box" style="color: #fff">
+          <strong>Interessanter Fakt:</strong> Das ARPANET wurde entwickelt, um
+          im Kriegsfall Infrastruktur zerstören zu können, während es selbst
+          sogar einen atomaren Angriff überstehen sollte. Es ist der direkte
+          Vorgänger des heutigen Internets. Die ARPA wurde 1958, also ein Jahr
+          nach dem "Sputnik-Schock", gegründet, weil die USA technologisch nie
+          wieder überrascht werden wollten. Die "Defense"-Ergänzung (ARPA →
+          DARPA) erfolgte dann 1972.
+        </div>
+        <br />
+        <h2>Schichten und Aufgaben des TCP/IP-Modells</h2>
+        <table class="compact-table">
+          <tr>
+            <td>5</td>
+            <td><strong>Anwendungsschicht</strong></td>
+            <td>
+              Alle anwendungsnahen Protokolle (z.B. HTTP, FTP, SMTP) (OSI 5-7)
+            </td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td><strong>Transportschicht</strong></td>
+            <td>Ende-zu-Ende-Kommunikation (TCP, UDP)</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td><strong>Internetschicht</strong></td>
+            <td>Routing und logische Adressierung (z.B. IP, ICMP, ARP)</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><strong>Sicherungsschicht</strong></td>
+            <td>
+              Fehlerkontrolle, Rahmung, Zugriffskontrolle (z.B. MAC-Adressen)
+            </td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td><strong>Physische Schicht</strong></td>
+            <td>
+              Übertragung von Bits via Stecker, Kabel und/oder Signalpegel
+            </td>
+          </tr>
+        </table>
+        <br />
+        <div class="attention-box" style="color: #fff">
+          <strong>Anmerkung:</strong> Ursprünglich war das TCP/IP-Modell nur mit
+          vier Schichten ausgestattet, dabei sind die ersten beiden Schichten
+          als sogenannte Netzzugangsschicht vereint. Die Nummer der restlichen
+          Schichten werden entsprechend um 1 verringert. Das 5-schichtige
+          TCP/IP-Modell ist aber praxisgerechter und funktional korrekter als
+          das 4-Schichtige.
+        </div>
+        <br />
+        <h2>Das TCP/IP-Modell in der Praxis</h2>
+        <p>
+          Das TCP/IP-Modell ist das praktisch umgesetzte Modell des Internets,
+          es ist flexibler als das OSI-Modell und konkret auf die
+          Internet-Protokollfamilie (<a
+            href="ip-addresses-de.html"
+            id="github-link"
+            >IPv4, IPv6</a
+          >, HTTP, FTP, DNS, DHCP, SMTP, POP3, usw.) ausgelegt, daher wird es in
+          der Netzwerktechnik und -administration als praktisches Schichtmodell
+          genutzt.
+        </p>
+        <br />
+        <h2>Das IEEE 802-Modell</h2>
+        <p>
+          Das Institute of Electrical and Electronics Engineers (kurz: IEEE,
+          Deutsch etwa: Ingenieursvereinigung für Elektrotechnik und Elektronik)
+          entwickelte im Jahr 1980 das IEEE 802-Modell, welches seit dem
+          Standards für lokale Netzwerke (LANs) und stadtweite Netzwerke (MANs)
+          spezifiziert. Dieses Referenzmodell beschränkt sich auf die ersten
+          beiden Schichten des OSI-Modells bzw. des 5-schichtigen
+          TCP/IP-Modells.
+        </p>
+        <br />
+        <div class="attention-box" style="color: #fff">
+          <strong>Anmerkung:</strong> Die 802 ist tatsächlich einfach nur die
+          Projektnummer. Die IEEE hat im Februar, also im 2. Monat, des Jahres
+          1980 ein Komitee zur Standardisierung von lokalen Netzwerken (LANs)
+          und stadtweiten Netzwerken (MANs) gegründet und die Projektnummer
+          setzte sich einfach aus dem Jahr (80) und dem Monat (2) zusammen.
+        </div>
+        <br />
+        <h2>Schichten und Aufgaben des IEEE 802-Modells</h2>
+        <ol>
+          <li>
+            <strong>Bitübertragungsschicht:</strong> Übertragung von Bits via
+            Stecker, Kabel und/oder Signalpegel.
+          </li>
+          <li>
+            <strong>Sicherungsschicht:</strong> Diese Schicht wird weiter
+            unterteilt:
+          </li>
+          <ol type="a">
+            <li>
+              <strong>Logical Link Control (LLC, IEEE 802.2):</strong>
+              Rahmensteuerung, Fehlerbehandlung, Flusskontrolle.
+            </li>
+            <li>
+              <strong>Media Access Control (MAC, IEEE 802.3):</strong>
+              Zugriffssteuerung, Adressierung, Kollisionsvermeidung.
+            </li>
+          </ol>
+        </ol>
+        <br />
+        <div class="attention-box" style="color: #fff">
+          <strong>Interessantes:</strong> Die IEEE ist mit über 400.000
+          Mitgliedern die weltweit größte Berufsorganisation für Ingenieure. Sie
+          entstand im Jahre 1963 aus der Fusion des 1884 gegründeten AIEE
+          (American Institute of Electrical Engineers, Deutsch etwa:
+          Amerikanisches Institut für Elektroingenieure) und dem 1912
+          gegründeten IRE (Institute for Radio Engineers, Deutsch etwa: Institut
+          für Funkingenieure).
+        </div>
+        <br />
+        <h2>Bedeutung</h2>
+        <p>
+          IEEE 802 spielt eine zentrale Rolle in der Entwicklung physischer
+          Netzwerke und LAN-Technologien. Insbesondere für Hardwarehersteller
+          und Netzwerkprotokolle sind diese Standards essenziell, da sie eine
+          einheitliche Grundlage für Kompatibilität und Interoperabilität
+          schaffen. Durch IEEE 802 wird sichergestellt, dass Geräte
+          verschiedener Hersteller nahtlos zusammenarbeiten können.
+        </p>
+        <br />
+        <h2>Beispiele</h2>
+        <p>
+          IEEE 802 umfasst zahlreiche Unterstandards, die verschiedene
+          Netzwerktechnologien definieren:
+        </p>
+        <ul>
+          <li>
+            <strong>IEEE 802.3 (Ethernet):</strong> Der bekannteste Standard für
+            kabelgebundene Netzwerke (LANs).
+          </li>
+          <li>
+            <strong>IEEE 802.11 (WLAN):</strong> Legt drahtlose
+            Netzwerktechnologien (Wi-Fi) fest.
+          </li>
+          <li>
+            <strong>IEEE 802.15 (Bluetooth/Zigbee):</strong> Definiert Personal
+            Area Networks (PANs), etwa für Bluetooth- und Zigbee-Kommunikation.
+          </li>
+        </ul>
+        <br />
+        <h2>Vergleich der Modelle</h2>
+        <table class="compact-table binary-decimal">
+          <tr>
+            <th><strong>Aspekt</strong></th>
+            <th><strong>OSI</strong></th>
+            <th><strong>TCP/IP</strong></th>
+            <th><strong>IEEE 802</strong></th>
+          </tr>
+          <tr>
+            <th><strong>Schichten</strong></th>
+            <td>7</td>
+            <td>5 (4)</td>
+            <td>2</td>
+          </tr>
+          <tr>
+            <th><strong>Fokus</strong></th>
+            <td>Universelles Lehrmodell</td>
+            <td>Praktisches Internetmodell</td>
+            <td>LAN/MAN, Schicht 1 und 2</td>
+          </tr>
+          <tr>
+            <th><strong>Nutzung</strong></th>
+            <td>Lehre, Strukturierung</td>
+            <td>Internet, reale Netzwerke</td>
+            <td>LAN-Standards (Ethernet, WLAN)</td>
+          </tr>
+          <tr>
+            <th><strong>Modularität</strong></th>
+            <td>Hoch</td>
+            <td>Weniger hoch</td>
+            <td>Auf Schicht 1 und 2 beschränkt</td>
+          </tr>
+          <tr>
+            <th><strong>Flexibilität</strong></th>
+            <td>Hoch, aber komplex</td>
+            <td>Sehr flexibel und pragmatisch</td>
+            <td>Für physische Netzwerke optimiert</td>
+          </tr>
+        </table>
+        <br />
+        <h2>Interessante Details und Trivia</h2>
+        <ul>
+          <li>
+            OSI und TCP/IP entstanden parallel, jedoch gewann TCP/IP die Praxis
+            durch ARPANET/Internet, während OSI im akademischen Umfeld
+            überlebte.
+          </li>
+          <li>
+            Das OSI-Modell definiert auch Dienste (Verbindungsorientierte und
+            Verbindungslose) und primitive Operationen, was in TCP/IP nicht
+            explizit spezifiziert ist.
+          </li>
+          <li>
+            IEEE 802-Standards bilden die physische Grundlage für das Internet
+            (Ethernet, WLAN), während TCP/IP darüber läuft.
+          </li>
+          <li>
+            Die OSI-Schichten 5 (Sitzung) und 6 (Darstellung) werden im Internet
+            kaum separat implementiert, ihre Funktionen werden meist von der
+            Anwendungsschicht (OSI Schicht 7, TCP/IP Schicht 5) übernommen.
+          </li>
+          <li>
+            Moderne Protokolle, wie QUIC (über UDP) zeigen, wie flexibel
+            Schichtnutzung heute üblich ist.
+          </li>
+          <li>
+            In modernen Netzwerken wird oft von einem sogenannten Layered
+            Protocol Stack (Deutsch etwa: Geschichteter Protokollstapel)
+            gesprochen, jedoch mit hybrider Umsetzung, etwa durch VPNs (Schicht
+            2/3), VLANs (Schicht 2), oder TLS (Schicht 6 über Schicht 4).
+          </li>
+        </ul>
+        <br />
+        <h2>Weitere (historische) Referenzschichtmodelle</h2>
+        <h3>SNA</h3>
+        <p>
+          Die Systems Network Architecture (SNA) wurde 1974 von IBM entwickelt
+          und war eine hierarchische Netzwerkarchitektur speziell für die
+          Kommunikation zwischen Großrechnern. SNA definierte klare
+          Kommunikationsschichten, war jedoch exklusiv auf IBM-Maschinen
+          ausgelegt und nicht als offener Standard verfügbar. Es ähnelt mit
+          seinen sieben Schichten grob dem OSI-Modell. Die Schichten waren:
+        </p>
+        <table class="compact-table">
+          <tr>
+            <td>7</td>
+            <td><strong>Transaction Services Layer</strong></td>
+            <td>Anwendungslogik</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td><strong>Presentation Services Layer</strong></td>
+            <td>Datenformatierung</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td><strong>Data Flow Control Layer</strong></td>
+            <td>Sitzungssteuerung</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td><strong>Transmission Control Layer</strong></td>
+            <td>Verbindungsmanagement</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td><strong>Path Control Layer</strong></td>
+            <td>Routing, Paketvermittlung</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><strong>Data Link Control Layer</strong></td>
+            <td>Rahmenbildung, Fehlerkontrolle</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td><strong>Physical Control Layer</strong></td>
+            <td>Bitübertragung</td>
+          </tr>
+        </table>
+        <p>
+          SNA wurde in den 1980er Jahren vereinfacht zu APPN und APPC, welche
+          heute noch vereinzelt in sogenannten Legacy-Systemen (Legacy = Erbe,
+          Altlast) wie z.B. in Banken benutzt werden. es ist immer IBM
+          spezifisch geblieben.
+        </p>
+        <br />
+        <h3>DECnet</h3>
+        <p>
+          Die DECnet-Architektur entstand 1975 durch die Digital Equipment
+          Corporation (DEC) und basiert auf einem 5-Schicht-Modell.<br />
+          Die Schichten des verbreitetsten Modells (Phase IV) waren:
+        </p>
+        <table class="compact-table">
+          <tr>
+            <td>5</td>
+            <td><strong>Application Layer</strong></td>
+            <td>Dienste wie Dateitransfer</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td><strong>Network Layer</strong></td>
+            <td>Routing, Adressierung</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td><strong>Transport Layer</strong></td>
+            <td>Ende-zu-Ende-Kommunikation</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><strong>Data Link Layer</strong></td>
+            <td>MAC-Adressen, Fehlererkennung</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td><strong>Physical Layer</strong></td>
+            <td>Hardware, z.B. Stecker, Kabel, Ethernet</td>
+          </tr>
+        </table>
+        <p>
+          DECnet Phase V migrierte 1987 zu OSI-Standards, um in der
+          internationalen Technologieentwicklung kompatibel zu bleiben, denn zu
+          jener Zeit etablierten sich OSI und TCP/IP als Standard in der
+          IT-Welt, wobei TCP/IP das Rennen letztendlich gewann. <br />
+          DEC wurde 1998 von Compaq übernommen.
+        </p>
+        <br />
+        <h3>AppleTalk</h3>
+        <p>
+          Apple führte 1985 AppleTalk als Protokollfamilie für lokale Netzwerke
+          ein. Obwohl AppleTalk eigene Schichtkonzepte enthielt, wurden diese
+          nie formal standardisiert, sondern blieben auf Apple-Geräte
+          beschränkt.<br />
+          Es nutzte ein informelles, 6-schichtiges Modell:
+        </p>
+        <table class="compact-table">
+          <tr>
+            <td>6</td>
+            <td><strong>Application Layer</strong></td>
+            <td>z.B. Apple Filing Protocol (AFP)</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td><strong>Session Layer</strong></td>
+            <td>AppleTalk Session Protocol (ASP)</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td><strong>Transport Layer</strong></td>
+            <td>AppleTalk Transaction Protocol (ATP)</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td><strong>Network Layer</strong></td>
+            <td>Datagram Delivery Protocol (DDP)</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><strong>Data Link Layer</strong></td>
+            <td>LocalTalk Link Access Protocol (LLAP)</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td><strong>Physical Layer</strong></td>
+            <td>z.B. LocalTalk über RS-232</td>
+          </tr>
+        </table>
+        <p>
+          AppleTalk wurde von 1999 - 2009 vollständig aus den Betriebssystemen
+          von Apple entfernt und durch TCP/IP kompatible Protokolle ersetzt.
+        </p>
+        <br />
+        <h3>X.25</h3>
+        <p>
+          Ein früher Standard für paketvermittelte Netzwerke war X.25,
+          entwickelt von der ITU-T im Jahre 1976. Es dominierte vor TCP/IP,
+          besonders in Europa, und war Grundlage für viele erste kommerzielle
+          Datennetze (z.B. Datex-P in Deutschland).<br />
+          Hierbei handelt es sich um ein 3-schichtiges Modell:
+        </p>
+        <table class="compact-table">
+          <tr>
+            <td>3</td>
+            <td><strong>Network Layer (PLP)</strong></td>
+            <td>
+              Adressierung via X.121-Adressen (eine Vorversion von
+              <a href="ip-addresses-de.html" id="github-link">IP-Adressen</a>)
+            </td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><strong>Link Layer (LAP-B)</strong></td>
+            <td>Fehlerkorrektur pro Hop ("reliable wires")</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td><strong>Physical Layer</strong></td>
+            <td>RS-232, V.24 (analog) oder ISDN (digital)</td>
+          </tr>
+        </table>
+        <br />
+        <div class="attention-box" style="color: #fff">
+          <strong>Interessanter Fakt:</strong> TCP/IP übernahm das Prinzip der
+          Fehlerkorrektur von X.25, verlagerte sie jedoch von einer
+          Hop-zu-Hop-Kontrolle (jeder Knoten prüft) zu einer
+          Ende-zu-Ende-Kontrolle. Dadurch müssen Router nur noch "dumm" Pakete
+          weiterleiten. Das erhöht die Geschindigkeit und die Skalierbarkeit des
+          Internets.<br />
+          Ironischer Weise nutzen moderne Mobilfunknetze wie LTE/5G wieder eine
+          Fehlerkontrolle pro Hop, da drahtlose Verbindungen störanfälliger
+          sind.
+        </div>
+        <br />
+        <p>
+          Es gibt heute noch Banken, die X.25 für ihre ATM-Transaktionen nutzen
+          und auch in der Flugsicherung (ACARS), sowie in Bahnleitsystemen kommt
+          es teilweise noch zum Einsatz.
+        </p>
+        <br />
+        <div class="attention-box" style="color: #fff">
+          <strong>Anmerkung:</strong> Die International Telecommunication Union
+          - Telecommunication Standardization Sector (kurz: ITU-T, Deutsch etwa:
+          Internationaler Telekommunikationsverband - Sektor für
+          Telekommunikationsstandardisierung) ist der "Technik-Arm" der ITU,
+          welche ursprünglich als International Telegraph Union am 17.05.1865 in
+          Paris gegründet wurde. 1932 wurde dann das "Telegraph" durch
+          "Telecommunication" ersetzt.
+        </div>
+      </div>
+
+      <footer>
+        <p>
+          Erstellt mit ❤️ für die Fachinformatiker-Ausbildung |
+          <a href="https://github.com/caglistro/learn-it" id="github-link"
+            >GitHub-Repo</a
+          >
+        </p>
+        <p>
+          <a href="index.html" style="color: #aad3ff"
+            >← Zurück zur Startseite</a
+          >
+        </p>
+      </footer>
+    </div>
+
+    <script>
+      function switchLanguage(lang) {
+        if (lang === "de") {
+          window.location.href = "reference-layer-models-de.html";
+        } else if (lang === "en") {
+          window.location.href = "reference-layer-models-en.html";
+        }
+      }
+    </script>
+  </body>
+</html>
+
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Referenzschichtmodelle - Learn IT</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <style>
+      .content-article {
+        background: rgba(23, 23, 23, 0.5);
+        padding: 30px;
+        border-radius: 12px;
+        margin-bottom: 30px;
+      }
+      .attention-box {
+        background: rgba(255, 165, 0, 0.2);
+        border-left: 4px solid #ffa500;
+        padding: 15px;
+        margin: 20px 0;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        background: rgba(255, 255, 255, 0.1);
+      }
+      th,
+      td {
+        padding: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        text-align: left;
+      }
+      th {
+        background: rgba(255, 255, 255, 0.15);
+      }
+      code {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: monospace;
+      }
+    </style>
+  </head>
+  <body class="reference-layer-models-page">
+    <div class="container">
+      <div class="button-bar">
+        <div class="language-switcher">
+          <button onclick="switchLanguage('de')">Deutsch</button>
+          <button onclick="switchLanguage('en')">English</button>
+        </div>
+        <a
+          href="downloads/Referenzschichtmodelle.pdf"
+          download
+          class="pdf-button"
+        >
+          Inhalt als PDF herunterladen
+        </a>
+      </div>
+
+      <header>
+        <h1>Referenzschichtmodelle</h1>
+      </header>
+
+      <div class="content-article">
+        <h2>Was sind Referenzschichtmodelle?</h2>
+        <p>
+          Ein Referenzschichtmodell stellt die komplexe Kommunikation innerhalb
+          von Netzwerken strukturiert aufgeteilt in Schichten (Englisch: Layers)
+          dar. Jede Schicht übernimmt klar definierte Aufgaben und bietet eine
+          standardisierte Schnittstelle. Darüber hinaus können durch die Nutzung
+          desselben Referenzmodells unterschiedliche Unternehmen Produkte
+          entwickeln, welche untereinander kompatibel sind.<br />
+          Heutzutage werden, mit sehr seltenen Ausnahmen, drei verschiedene
+          Schichtmodelle genutzt. OSI, TCP/IP und IEEE 802.
+        </p>
+        <br />
+        <h2>Die Zwecke von Referenzschichtmodellen</h2>
+        <p>
+          <li>Komplexitätsreduktion</li>
+          <li>Modularisierung</li>
+          <li>Herstellerübergreifende Interoperabilität</li>
+          <li>Erleichterte Fehlerlokalisation</li>
+          <li>
+            Unabhängig von spezifischer Hardware und spezifischen Technologien
+          </li>
+        </p>
+        <br />
+        <h2>Das OSI-Modell</h2>
+        <p>
+          OSI steht für Open Systems Interconnection (Deutsch etwa: Offene
+          Systemverbindung) wurde 1977 von der ISO (International Organization
+          for Standardization, Deutsch: Internationale
+          Standardisierungsorganisation) initiiert und wurde 1984 als ISO 7498
+          veröffentlicht. Das OSI-Modell wurde als universelles Standardmodell
+          für alle Netzwerke entwickelt.
+        </p>
+        <br />
+        <h2>Schichten und Aufgaben des OSI-Modells</h2>
+        <ul>
+          <table class="compact-table">
+            <tr>
+              <td>7</td>
+              <td><strong>Anwendungsschicht</strong></td>
+              <td>Schnittstelle zu Anwendungen (z.B. HTTP, SMTP)</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td><strong>Darstellungsschicht</strong></td>
+              <td>
+                Datenformatierung (z.B. ASCII, JPEG, Verschlüsselung,
+                Kompression)
+              </td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td><strong>Sitzungsschicht</strong></td>
+              <td>
+                Sitzungsverwaltung, Dialogsteuerung (z.B.
+                Sitzungswiederaufnahme)
+              </td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td><strong>Transportschicht</strong></td>
+              <td>
+                Ende-zu-Ende-Kommunikation, Fehlerkorrektur, Flusskontrolle
+                (TCP, UDP)
+              </td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td><strong>Vermittlungsschicht</strong></td>
+              <td>Routing, logische Adressierung (z.B. IP, ICMP, ARP)</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td><strong>Sicherungsschicht</strong></td>
+              <td>
+                Fehlerkontrolle, Rahmung, Zugriffskontrolle (z.B. MAC-Adressen)
+              </td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td><strong>Bitübertragungsschicht</strong></td>
+              <td>
+                Übertragung von Bits via Stecker, Kabel und/oder Signalpegel
+              </td>
+            </tr>
+          </table>
+        </ul>
+        <br />
+        <h2>Das OSI-Modell in der Praxis</h2>
+        <p>
+          Das OSI-Modell wird zur Strukturierung von Protokollen,
+          Netzwerktheorie und Lehre genutzt. Praxisnahe Implementierungen
+          orientieren sich nur grob daran.
+        </p>
+        <br />
+        <h2>Das TCP/IP-Modell</h2>
+        <p>
+          Die ARPA, später DARPA ((Defense) Advanced Research Projects Agency,
+          Deutsch etwa: Behörde für fortschrittliche (Verteidigungs-)
+          Forschungsprojekte) entwickelte das TCP/IP-Modell in den 1970er Jahren
+          für ihr ARPANET (Advanced Research Projects Agency NETwork). 1983
+          wurde das TCP/IP das Standardmodell im ARPANET.
+        </p>
+        <br />
+        <div class="attention-box" style="color: #fff">
+          <strong>Interessanter Fakt:</strong> Das ARPANET wurde entwickelt, um
+          im Kriegsfall Infrastruktur zerstören zu können, während es selbst
+          sogar einen atomaren Angriff überstehen sollte. Es ist der direkte
+          Vorgänger des heutigen Internets. Die ARPA wurde 1958, also ein Jahr
+          nach dem "Sputnik-Schock", gegründet, weil die USA technologisch nie
+          wieder überrascht werden wollten. Die "Defense"-Ergänzung (ARPA →
+          DARPA) erfolgte dann 1972.
+        </div>
+        <br />
+        <h2>Schichten und Aufgaben des TCP/IP-Modells</h2>
+        <table class="compact-table">
+          <tr>
+            <td>5</td>
+            <td><strong>Anwendungsschicht</strong></td>
+            <td>
+              Alle anwendungsnahen Protokolle (z.B. HTTP, FTP, SMTP) (OSI 5-7)
+            </td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td><strong>Transportschicht</strong></td>
+            <td>Ende-zu-Ende-Kommunikation (TCP, UDP)</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td><strong>Internetschicht</strong></td>
+            <td>Routing und logische Adressierung (z.B. IP, ICMP, ARP)</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><strong>Sicherungsschicht</strong></td>
+            <td>
+              Fehlerkontrolle, Rahmung, Zugriffskontrolle (z.B. MAC-Adressen)
+            </td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td><strong>Physische Schicht</strong></td>
+            <td>
+              Übertragung von Bits via Stecker, Kabel und/oder Signalpegel
+            </td>
+          </tr>
+        </table>
+        <br />
+        <div class="attention-box" style="color: #fff">
+          <strong>Anmerkung:</strong> Ursprünglich war das TCP/IP-Modell nur mit
+          vier Schichten ausgestattet, dabei sind die ersten beiden Schichten
+          als sogenannte Netzzugangsschicht vereint. Die Nummer der restlichen
+          Schichten werden entsprechend um 1 verringert. Das 5-schichtige
+          TCP/IP-Modell ist aber praxisgerechter und funktional korrekter als
+          das 4-Schichtige.
+        </div>
+        <br />
+        <h2>Das TCP/IP-Modell in der Praxis</h2>
+        <p>
+          Das TCP/IP-Modell ist das praktisch umgesetzte Modell des Internets,
+          es ist flexibler als das OSI-Modell und konkret auf die
+          Internet-Protokollfamilie (<a
+            href="ip-addresses-de.html"
+            id="github-link"
+            >IPv4, IPv6</a
+          >, HTTP, FTP, DNS, DHCP, SMTP, POP3, usw.) ausgelegt, daher wird es in
+          der Netzwerktechnik und -administration als praktisches Schichtmodell
+          genutzt.
+        </p>
+        <br />
+        <h2>Das IEEE 802-Modell</h2>
+        <p>
+          Das Institute of Electrical and Electronics Engineers (kurz: IEEE,
+          Deutsch etwa: Ingenieursvereinigung für Elektrotechnik und Elektronik)
+          entwickelte im Jahr 1980 das IEEE 802-Modell, welches seit dem
+          Standards für lokale Netzwerke (LANs) und stadtweite Netzwerke (MANs)
+          spezifiziert. Dieses Referenzmodell beschränkt sich auf die ersten
+          beiden Schichten des OSI-Modells bzw. des 5-schichtigen
+          TCP/IP-Modells.
+        </p>
+        <br />
+        <div class="attention-box" style="color: #fff">
+          <strong>Anmerkung:</strong> Die 802 ist tatsächlich einfach nur die
+          Projektnummer. Die IEEE hat im Februar, also im 2. Monat, des Jahres
+          1980 ein Komitee zur Standardisierung von lokalen Netzwerken (LANs)
+          und stadtweiten Netzwerken (MANs) gegründet und die Projektnummer
+          setzte sich einfach aus dem Jahr (80) und dem Monat (2) zusammen.
+        </div>
+        <br />
+        <h2>Schichten und Aufgaben des IEEE 802-Modells</h2>
+        <ol>
+          <li>
+            <strong>Bitübertragungsschicht:</strong> Übertragung von Bits via
+            Stecker, Kabel und/oder Signalpegel.
+          </li>
+          <li>
+            <strong>Sicherungsschicht:</strong> Diese Schicht wird weiter
+            unterteilt:
+          </li>
+          <ol type="a">
+            <li>
+              <strong>Logical Link Control (LLC, IEEE 802.2):</strong>
+              Rahmensteuerung, Fehlerbehandlung, Flusskontrolle.
+            </li>
+            <li>
+              <strong>Media Access Control (MAC, IEEE 802.3):</strong>
+              Zugriffssteuerung, Adressierung, Kollisionsvermeidung.
+            </li>
+          </ol>
+        </ol>
+        <br />
+        <div class="attention-box" style="color: #fff">
+          <strong>Interessantes:</strong> Die IEEE ist mit über 400.000
+          Mitgliedern die weltweit größte Berufsorganisation für Ingenieure. Sie
+          entstand im Jahre 1963 aus der Fusion des 1884 gegründeten AIEE
+          (American Institute of Electrical Engineers, Deutsch etwa:
+          Amerikanisches Institut für Elektroingenieure) und dem 1912
+          gegründeten IRE (Institute for Radio Engineers, Deutsch etwa: Institut
+          für Funkingenieure).
+        </div>
+        <br />
+        <h2>Bedeutung</h2>
+        <p>
+          IEEE 802 spielt eine zentrale Rolle in der Entwicklung physischer
+          Netzwerke und LAN-Technologien. Insbesondere für Hardwarehersteller
+          und Netzwerkprotokolle sind diese Standards essenziell, da sie eine
+          einheitliche Grundlage für Kompatibilität und Interoperabilität
+          schaffen. Durch IEEE 802 wird sichergestellt, dass Geräte
+          verschiedener Hersteller nahtlos zusammenarbeiten können.
+        </p>
+        <br />
+        <h2>Beispiele</h2>
+        <p>
+          IEEE 802 umfasst zahlreiche Unterstandards, die verschiedene
+          Netzwerktechnologien definieren:
+        </p>
+        <ul>
+          <li>
+            <strong>IEEE 802.3 (Ethernet):</strong> Der bekannteste Standard für
+            kabelgebundene Netzwerke (LANs).
+          </li>
+          <li>
+            <strong>IEEE 802.11 (WLAN):</strong> Legt drahtlose
+            Netzwerktechnologien (Wi-Fi) fest.
+          </li>
+          <li>
+            <strong>IEEE 802.15 (Bluetooth/Zigbee):</strong> Definiert Personal
+            Area Networks (PANs), etwa für Bluetooth- und Zigbee-Kommunikation.
+          </li>
+        </ul>
+        <br />
+        <h2>Vergleich der Modelle</h2>
+        <table class="compact-table binary-decimal">
+          <tr>
+            <th><strong>Aspekt</strong></th>
+            <th><strong>OSI</strong></th>
+            <th><strong>TCP/IP</strong></th>
+            <th><strong>IEEE 802</strong></th>
+          </tr>
+          <tr>
+            <th><strong>Schichten</strong></th>
+            <td>7</td>
+            <td>5 (4)</td>
+            <td>2</td>
+          </tr>
+          <tr>
+            <th><strong>Fokus</strong></th>
+            <td>Universelles Lehrmodell</td>
+            <td>Praktisches Internetmodell</td>
+            <td>LAN/MAN, Schicht 1 und 2</td>
+          </tr>
+          <tr>
+            <th><strong>Nutzung</strong></th>
+            <td>Lehre, Strukturierung</td>
+            <td>Internet, reale Netzwerke</td>
+            <td>LAN-Standards (Ethernet, WLAN)</td>
+          </tr>
+          <tr>
+            <th><strong>Modularität</strong></th>
+            <td>Hoch</td>
+            <td>Weniger hoch</td>
+            <td>Auf Schicht 1 und 2 beschränkt</td>
+          </tr>
+          <tr>
+            <th><strong>Flexibilität</strong></th>
+            <td>Hoch, aber komplex</td>
+            <td>Sehr flexibel und pragmatisch</td>
+            <td>Für physische Netzwerke optimiert</td>
+          </tr>
+        </table>
+        <br />
+        <h2>Interessante Details und Trivia</h2>
+        <ul>
+          <li>
+            OSI und TCP/IP entstanden parallel, jedoch gewann TCP/IP die Praxis
+            durch ARPANET/Internet, während OSI im akademischen Umfeld
+            überlebte.
+          </li>
+          <li>
+            Das OSI-Modell definiert auch Dienste (Verbindungsorientierte und
+            Verbindungslose) und primitive Operationen, was in TCP/IP nicht
+            explizit spezifiziert ist.
+          </li>
+          <li>
+            IEEE 802-Standards bilden die physische Grundlage für das Internet
+            (Ethernet, WLAN), während TCP/IP darüber läuft.
+          </li>
+          <li>
+            Die OSI-Schichten 5 (Sitzung) und 6 (Darstellung) werden im Internet
+            kaum separat implementiert, ihre Funktionen werden meist von der
+            Anwendungsschicht (OSI Schicht 7, TCP/IP Schicht 5) übernommen.
+          </li>
+          <li>
+            Moderne Protokolle, wie QUIC (über UDP) zeigen, wie flexibel
+            Schichtnutzung heute üblich ist.
+          </li>
+          <li>
+            In modernen Netzwerken wird oft von einem sogenannten Layered
+            Protocol Stack (Deutsch etwa: Geschichteter Protokollstapel)
+            gesprochen, jedoch mit hybrider Umsetzung, etwa durch VPNs (Schicht
+            2/3), VLANs (Schicht 2), oder TLS (Schicht 6 über Schicht 4).
+          </li>
+        </ul>
+        <br />
+        <h2>Weitere (historische) Referenzschichtmodelle</h2>
+        <h3>SNA</h3>
+        <p>
+          Die Systems Network Architecture (SNA) wurde 1974 von IBM entwickelt
+          und war eine hierarchische Netzwerkarchitektur speziell für die
+          Kommunikation zwischen Großrechnern. SNA definierte klare
+          Kommunikationsschichten, war jedoch exklusiv auf IBM-Maschinen
+          ausgelegt und nicht als offener Standard verfügbar. Es ähnelt mit
+          seinen sieben Schichten grob dem OSI-Modell. Die Schichten waren:
+        </p>
+        <table class="compact-table">
+          <tr>
+            <td>7</td>
+            <td><strong>Transaction Services Layer</strong></td>
+            <td>Anwendungslogik</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td><strong>Presentation Services Layer</strong></td>
+            <td>Datenformatierung</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td><strong>Data Flow Control Layer</strong></td>
+            <td>Sitzungssteuerung</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td><strong>Transmission Control Layer</strong></td>
+            <td>Verbindungsmanagement</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td><strong>Path Control Layer</strong></td>
+            <td>Routing, Paketvermittlung</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><strong>Data Link Control Layer</strong></td>
+            <td>Rahmenbildung, Fehlerkontrolle</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td><strong>Physical Control Layer</strong></td>
+            <td>Bitübertragung</td>
+          </tr>
+        </table>
+        <p>
+          SNA wurde in den 1980er Jahren vereinfacht zu APPN und APPC, welche
+          heute noch vereinzelt in sogenannten Legacy-Systemen (Legacy = Erbe,
+          Altlast) wie z.B. in Banken benutzt werden. es ist immer IBM
+          spezifisch geblieben.
+        </p>
+        <br />
+        <h3>DECnet</h3>
+        <p>
+          Die DECnet-Architektur entstand 1975 durch die Digital Equipment
+          Corporation (DEC) und basiert auf einem 5-Schicht-Modell.<br />
+          Die Schichten des verbreitetsten Modells (Phase IV) waren:
+        </p>
+        <table class="compact-table">
+          <tr>
+            <td>5</td>
+            <td><strong>Application Layer</strong></td>
+            <td>Dienste wie Dateitransfer</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td><strong>Network Layer</strong></td>
+            <td>Routing, Adressierung</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td><strong>Transport Layer</strong></td>
+            <td>Ende-zu-Ende-Kommunikation</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><strong>Data Link Layer</strong></td>
+            <td>MAC-Adressen, Fehlererkennung</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td><strong>Physical Layer</strong></td>
+            <td>Hardware, z.B. Stecker, Kabel, Ethernet</td>
+          </tr>
+        </table>
+        <p>
+          DECnet Phase V migrierte 1987 zu OSI-Standards, um in der
+          internationalen Technologieentwicklung kompatibel zu bleiben, denn zu
+          jener Zeit etablierten sich OSI und TCP/IP als Standard in der
+          IT-Welt, wobei TCP/IP das Rennen letztendlich gewann. <br />
+          DEC wurde 1998 von Compaq übernommen.
+        </p>
+        <br />
+        <h3>AppleTalk</h3>
+        <p>
+          Apple führte 1985 AppleTalk als Protokollfamilie für lokale Netzwerke
+          ein. Obwohl AppleTalk eigene Schichtkonzepte enthielt, wurden diese
+          nie formal standardisiert, sondern blieben auf Apple-Geräte
+          beschränkt.<br />
+          Es nutzte ein informelles, 6-schichtiges Modell:
+        </p>
+        <table class="compact-table">
+          <tr>
+            <td>6</td>
+            <td><strong>Application Layer</strong></td>
+            <td>z.B. Apple Filing Protocol (AFP)</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td><strong>Session Layer</strong></td>
+            <td>AppleTalk Session Protocol (ASP)</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td><strong>Transport Layer</strong></td>
+            <td>AppleTalk Transaction Protocol (ATP)</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td><strong>Network Layer</strong></td>
+            <td>Datagram Delivery Protocol (DDP)</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><strong>Data Link Layer</strong></td>
+            <td>LocalTalk Link Access Protocol (LLAP)</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td><strong>Physical Layer</strong></td>
+            <td>z.B. LocalTalk über RS-232</td>
+          </tr>
+        </table>
+        <p>
+          AppleTalk wurde von 1999 - 2009 vollständig aus den Betriebssystemen
+          von Apple entfernt und durch TCP/IP kompatible Protokolle ersetzt.
+        </p>
+        <br />
+        <h3>X.25</h3>
+        <p>
+          Ein früher Standard für paketvermittelte Netzwerke war X.25,
+          entwickelt von der ITU-T im Jahre 1976. Es dominierte vor TCP/IP,
+          besonders in Europa, und war Grundlage für viele erste kommerzielle
+          Datennetze (z.B. Datex-P in Deutschland).<br />
+          Hierbei handelt es sich um ein 3-schichtiges Modell:
+        </p>
+        <table class="compact-table">
+          <tr>
+            <td>3</td>
+            <td><strong>Network Layer (PLP)</strong></td>
+            <td>
+              Adressierung via X.121-Adressen (eine Vorversion von
+              <a href="ip-addresses-de.html" id="github-link">IP-Adressen</a>)
+            </td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><strong>Link Layer (LAP-B)</strong></td>
+            <td>Fehlerkorrektur pro Hop ("reliable wires")</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td><strong>Physical Layer</strong></td>
+            <td>RS-232, V.24 (analog) oder ISDN (digital)</td>
+          </tr>
+        </table>
+        <br />
+        <div class="attention-box" style="color: #fff">
+          <strong>Interessanter Fakt:</strong> TCP/IP übernahm das Prinzip der
+          Fehlerkorrektur von X.25, verlagerte sie jedoch von einer
+          Hop-zu-Hop-Kontrolle (jeder Knoten prüft) zu einer
+          Ende-zu-Ende-Kontrolle. Dadurch müssen Router nur noch "dumm" Pakete
+          weiterleiten. Das erhöht die Geschindigkeit und die Skalierbarkeit des
+          Internets.<br />
+          Ironischer Weise nutzen moderne Mobilfunknetze wie LTE/5G wieder eine
+          Fehlerkontrolle pro Hop, da drahtlose Verbindungen störanfälliger
+          sind.
+        </div>
+        <br />
+        <p>
+          Es gibt heute noch Banken, die X.25 für ihre ATM-Transaktionen nutzen
+          und auch in der Flugsicherung (ACARS), sowie in Bahnleitsystemen kommt
+          es teilweise noch zum Einsatz.
+        </p>
+        <br />
+        <div class="attention-box" style="color: #fff">
+          <strong>Anmerkung:</strong> Die International Telecommunication Union
+          - Telecommunication Standardization Sector (kurz: ITU-T, Deutsch etwa:
+          Internationaler Telekommunikationsverband - Sektor für
+          Telekommunikationsstandardisierung) ist der "Technik-Arm" der ITU,
+          welche ursprünglich als International Telegraph Union am 17.05.1865 in
+          Paris gegründet wurde. 1932 wurde dann das "Telegraph" durch
+          "Telecommunication" ersetzt.
+        </div>
+      </div>
+
+      <footer>
+        <p>
+          Erstellt mit ❤️ für die Fachinformatiker-Ausbildung |
+          <a href="https://github.com/caglistro/learn-it" id="github-link"
+            >GitHub-Repo</a
+          >
+        </p>
+        <p>
+          <a href="index.html" style="color: #aad3ff"
+            >← Zurück zur Startseite</a
+          >
+        </p>
+      </footer>
+    </div>
+
+    <script>
+      function switchLanguage(lang) {
+        if (lang === "de") {
+          window.location.href = "reference-layer-models-de.html";
+        } else if (lang === "en") {
+          window.location.href = "reference-layer-models-en.html";
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learn IT - Fachinformatiker-Wiki</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="language-switcher">
+        <button onclick="switchLanguage('de')">Deutsch</button>
+        <button onclick="switchLanguage('en')">English</button>
+      </div>
+
+      <header>
+        <h1 id="title">Learn IT</h1>
+        <p id="subtitle">Lernen durch Lehren – Fachinformatiker-Wiki</p>
+      </header>
+
+      <div class="topics">
+        <!-- Referenzschichtmodell-Karte -->
+        <div class="topic-card">
+          <h2 id="reference-layer-models-title">Referenzschichtmodelle</h2>
+          <p id="reference-layer-models-desc">
+            Alles Wissenwerte zu OSI, TCP/IP, IEEE 802, usw.
+          </p>
+          <a
+            href="reference-layer-models-de.html.html"
+            id="reference-layer-models-link"
+            >Zum Thema →</a
+          >
+        </div>
+        <!-- IP-Adressen-Karte -->
+        <div class="topic-card">
+          <h2 id="ip-addresses-title">IP-Adressen</h2>
+          <p id="ip-addresses-desc">Alles Wissenswerte über IP-Adressen</p>
+          <a href="ip-addresses-de.html" id="ip-addresses-link">Zum Thema →</a>
+        </div>
+        <!-- Subnetzmasken-Karte -->
+        <div class="topic-card">
+          <h2 id="subnetmask-title">Die Subnetzmaske</h2>
+          <p id="subnetmask-desc">Aufbau und Funktion der Subnetzmaske</p>
+          <a href="subnetmask-de.html" id="subnetmask-link">Zum Thema →</a>
+        </div>
+
+        <!-- Subnetting-Karte -->
+        <div class="topic-card">
+          <h2 id="subnetting-title">Subnetting</h2>
+          <p id="subnetting-desc">Grundlagen der Netzwerkunterteilung</p>
+          <a href="subnetting-de.html" id="subnetting-link">Zum Thema →</a>
+        </div>
+
+        <!-- Akronyme-Karte -->
+        <div class="topic-card">
+          <h2 id="acronyms-title">IT Akronyme</h2>
+          <p id="acronyms-desc">IT Akronyme und ihre Bedeutungen.</p>
+          <a href="it-acronyms-de.html" id="acronyms-link">Zum Thema →</a>
+        </div>
+
+        <!-- Platzhalter-Karte -->
+        <div class="topic-card">
+          <h2 id="new-topic-title">Kommt in Kürze</h2>
+          <p id="new-topic-desc">Weitere Themen folgen</p>
+          <a href="#" id="new-topic-link">Bald verfügbar</a>
+        </div>
+      </div>
+
+      <footer>
+        <p id="footer-text">
+          Erstellt mit ❤️ für die Fachinformatiker-Ausbildung |
+          <a href="https://github.com/CaGListRo" id="github-link"
+            >GitHub-Repo</a
+          >
+        </p>
+      </footer>
+    </div>
+
+    <script>
+      function switchLanguage(lang) {
+        if (lang === "de") {
+          // Deutsch
+          document.getElementById("title").textContent = "Learn IT";
+          document.getElementById("subtitle").textContent =
+            "Lernen durch Lehren – Fachinformatiker-Wiki";
+          // Referenzschichtmodelle
+          document.getElementById("reference-layer-models-title").textContent =
+            "Referenzschichtmodelle";
+          document.getElementById("reference-layer-models-desc").textContent =
+            "Alles Wissenwerte zu OSI, TCP/IP, IEEE 802, usw.";
+          document.getElementById("reference-layer-models-link").textContent =
+            "Zum Thema →";
+          document.getElementById("reference-layer-models-link").href =
+            "reference-layer-models-de.html";
+          // IP-Adressen
+          document.getElementById("ip-addresses-title").textContent =
+            "IP-Adressen";
+          document.getElementById("ip-addresses-desc").textContent =
+            "Alles Wissenswerte über IP-Adressen";
+          document.getElementById("ip-addresses-link").textContent =
+            "Zum Thema →";
+          document.getElementById("ip-addresses-link").href =
+            "ip-addresses-de.html";
+          // Subnetzmaske
+          document.getElementById("subnetmask-title").textContent =
+            "Die Subnetzmaske";
+          document.getElementById("subnetmask-desc").textContent =
+            "Aufbau und Funktion der Subnetzmaske";
+          document.getElementById("subnetmask-link").textContent =
+            "Zum Thema →";
+          document.getElementById("subnetmask-link").href =
+            "subnetting-de.html";
+          // Subnetting
+          document.getElementById("subnetting-title").textContent =
+            "Subnetting";
+          document.getElementById("subnetting-desc").textContent =
+            "Grundlagen der Netzwerkunterteilung";
+          document.getElementById("subnetting-link").textContent =
+            "Zum Thema →";
+          document.getElementById("subnetting-link").href =
+            "subnetting-de.html";
+          // Akronyme
+          document.getElementById("acronyms-title").textContent = "IT Akronyme";
+          document.getElementById("acronyms-desc").textContent =
+            "IT Akronyme und ihre Bedeutungen.";
+          document.getElementById("acronyms-link").textContent = "Zum Thema →";
+          document.getElementById("acronyms-link").href = "it-acronyms-de.html";
+          // Platzhalter
+          document.getElementById("new-topic-title").textContent =
+            "Kommt in Kürze";
+          document.getElementById("new-topic-desc").textContent =
+            "Weitere Themen folgen";
+          document.getElementById("new-topic-link").textContent =
+            "Bald verfügbar";
+          document.getElementById("footer-text").innerHTML =
+            'Erstellt mit ❤️ für die Fachinformatiker-Ausbildung | <a href="https://github.com/CaGListRo">GitHub-Repo</a>';
+        } else if (lang === "en") {
+          // Englisch
+          document.getElementById("title").textContent = "Learn IT";
+          document.getElementById("subtitle").textContent =
+            "Learning by Teaching – IT Specialist Wiki";
+          // Layered Reference Models
+          document.getElementById("reference-layer-models-title").textContent =
+            "Layered Reference Models";
+          document.getElementById("reference-layer-models-desc").textContent =
+            "All you need to know about OSI, TCP/IP, IEEE 802, etc.";
+          document.getElementById("reference-layer-models-link").textContent =
+            "To the topic →";
+          document.getElementById("reference-layer-models-link").href =
+            "reference-layer-models-en.html";
+          // IP addresses
+          document.getElementById("ip-addresses-title").textContent =
+            "IP Addresses";
+          document.getElementById("ip-addresses-desc").textContent =
+            "All you need to know about IP addresses";
+          document.getElementById("ip-addresses-link").textContent =
+            "To the topic →";
+          document.getElementById("ip-addresses-link").href =
+            "ip-addresses-en.html";
+          // subnet mask
+          document.getElementById("subnetmask-title").textContent =
+            "The Subnet Mask";
+          document.getElementById("subnetmask-desc").textContent =
+            "Structure and function of the subnet mask";
+          document.getElementById("subnetmask-link").textContent =
+            "To the topic →";
+          document.getElementById("subnetmask-link").href =
+            "subnetmask-en.html";
+          // subnetting
+          document.getElementById("subnetting-title").textContent =
+            "Subnetting";
+          document.getElementById("subnetting-desc").textContent =
+            "Network subdivision basics";
+          document.getElementById("subnetting-link").textContent =
+            "To the topic →";
+          document.getElementById("subnetting-link").href =
+            "subnetting-en.html";
+          // Acronyms
+          document.getElementById("acronyms-title").textContent = "IT Acronyms";
+          document.getElementById("acronyms-desc").textContent =
+            "IT Akronyme and their meanings.";
+          document.getElementById("acronyms-link").textContent =
+            "To the topic →";
+          document.getElementById("acronyms-link").href = "it-acronyms-en.html";
+          // placeholder
+          document.getElementById("new-topic-title").textContent =
+            "Coming soon";
+          document.getElementById("new-topic-desc").textContent =
+            "More topics coming";
+          document.getElementById("new-topic-link").textContent =
+            "Available soon";
+          document.getElementById("footer-text").innerHTML =
+            'Made with ❤️ for IT specialist training | <a href="https://github.com/CaGListRo/learn-it">GitHub Repo</a>';
+        }
+      }
+    </script>
+  </body>
+</html>
